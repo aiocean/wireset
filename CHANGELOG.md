@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/aiocean/wireset/compare/v0.3.0...v0.4.0) (2023-07-28)
+
+
+### Features
+
+* update ([f7d7079](https://github.com/aiocean/wireset/commit/f7d70790e891af430230821bb67b4830c2d0e031))
+* update ([c2b296f](https://github.com/aiocean/wireset/commit/c2b296f370a6b4b542c051e7fcfae3db0ab781d0))
+
 ## [0.3.0](https://github.com/aiocean/wireset/compare/v0.2.0...v0.3.0) (2023-07-28)
 
 
