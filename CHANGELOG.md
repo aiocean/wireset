@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/aiocean/wireset/compare/v0.4.0...v0.5.0) (2024-02-27)
+
+
+### Features
+
+* Add MinimalAppWireset and health check endpoint ([d10fac8](https://github.com/aiocean/wireset/commit/d10fac85fe503d11def72981ccea836ba5f77e80))
+* add realtime module ([b32d6b1](https://github.com/aiocean/wireset/commit/b32d6b1b30d646ee1872e968f2858c4150a703f5))
+* add realtime module ([a7848a2](https://github.com/aiocean/wireset/commit/a7848a2ccba0d727fc5c1f82cfc4e648138d4e3e))
+* **cachesvc:** add comments and improve functions ([31ae86d](https://github.com/aiocean/wireset/commit/31ae86d00d32cdbd5f815439748022ed5c990f4a))
+* supprot connrct uri ([a34527b](https://github.com/aiocean/wireset/commit/a34527b9edbd60805c481779e9ba8ec9d7632d9d))
+* supprot connrct uri ([f587d24](https://github.com/aiocean/wireset/commit/f587d24355ae9907b94bda80ab35751ff261ad6e))
+* upgrade watermilk ([2cb8d8f](https://github.com/aiocean/wireset/commit/2cb8d8fedf24902662b599412ed56610ee5216aa))
+
 ## [0.4.0](https://github.com/aiocean/wireset/compare/v0.3.0...v0.4.0) (2023-10-18)
 
 
