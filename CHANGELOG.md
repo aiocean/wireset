@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/aiocean/wireset/compare/v1.1.0...v1.2.0) (2024-09-30)
+
+
+### Features
+
+* update doc ([cc22e6a](https://github.com/aiocean/wireset/commit/cc22e6a3b554ffb968682db4e3228443313bef0d))
+
 ## [1.1.0](https://github.com/aiocean/wireset/compare/v1.0.0...v1.1.0) (2024-09-30)
 
 
