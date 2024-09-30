@@ -1,0 +1,2713 @@
+{
+  "Providers": [
+    {
+      "ImportPath": "github.com/aiocean/wireset/cachesvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/cachesvc/cachesvc.go",
+      "FuncName": "ProvideCacheConfig",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "CacheConfig",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/cachesvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/cachesvc/cachesvc.go",
+      "FuncName": "NewCacheService",
+      "Arguments": [
+        {
+          "Name": "CacheConfig",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "CacheService",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/casbinsvc/casbinsvc.go",
+      "FuncName": "NewModel",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Model",
+          "ImportPath": "github.com/casbin/casbin/v2/model",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/casbinsvc/casbinsvc.go",
+      "FuncName": "NewEnforcer",
+      "Arguments": [
+        {
+          "Name": "Model",
+          "ImportPath": "github.com/casbin/casbin/v2/model",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Adapter",
+          "ImportPath": "github.com/casbin/casbin/v2/persist",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Enforcer",
+          "ImportPath": "github.com/casbin/casbin/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/casbinsvc/mongo.go",
+      "FuncName": "NewMongoAdapterFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "BatchAdapter",
+          "ImportPath": "github.com/casbin/casbin/v2/persist",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/casbinsvc/mongo.go",
+      "FuncName": "NewMongoEnforcerFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Enforcer",
+          "ImportPath": "github.com/casbin/casbin/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/casbinsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/configsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/configsvc/config.go",
+      "FuncName": "NewConfigFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/datadogsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/datadogsvc/tracersvc.go",
+      "FuncName": "NewDatadogSvc",
+      "Arguments": [
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "DatadogSvc",
+          "ImportPath": "github.com/aiocean/wireset/datadogsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/datadogsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/datadogsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/dgraphsvc/dgraphsvc.go",
+      "FuncName": "ProvideConfig",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/dgraphsvc/dgraphsvc.go",
+      "FuncName": "createDialOptions",
+      "Arguments": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "[]grpc.DialOption",
+          "ImportPath": "google.golang.org/grpc",
+          "IsPointer": false,
+          "IsArray": true,
+          "IsSlice": true,
+          "ElemType": {
+            "Name": "DialOption",
+            "ImportPath": "google.golang.org/grpc",
+            "IsPointer": false,
+            "IsArray": false,
+            "IsSlice": false,
+            "ElemType": null
+          }
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/dgraphsvc/dgraphsvc.go",
+      "FuncName": "dialDgraphWithRetry",
+      "Arguments": [
+        {
+          "Name": "Context",
+          "ImportPath": "context",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "[]grpc.DialOption",
+          "ImportPath": "google.golang.org/grpc",
+          "IsPointer": false,
+          "IsArray": true,
+          "IsSlice": true,
+          "ElemType": {
+            "Name": "DialOption",
+            "ImportPath": "google.golang.org/grpc",
+            "IsPointer": false,
+            "IsArray": false,
+            "IsSlice": false,
+            "ElemType": null
+          }
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ClientConn",
+          "ImportPath": "google.golang.org/grpc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/dgraphsvc/dgraphsvc.go",
+      "FuncName": "NewDgraphSvc",
+      "Arguments": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Dgraph",
+          "ImportPath": "github.com/dgraph-io/dgo/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/dgraphsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/discordserver",
+      "FilePath": "/Volumes/Data/Projects/wireset/discordserver/discordServer.go",
+      "FuncName": "NewDiscordServer",
+      "Arguments": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/discordserver",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "DiscordServer",
+          "ImportPath": "github.com/aiocean/wireset/discordserver",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/config",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/discord-notify/config/config.go",
+      "FuncName": "NewNotifyConfigFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/config",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/config",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/event",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/discord-notify/event/notify-discord-on-install.go",
+      "FuncName": "NewNotifyDiscordOnInstallHandler",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/config",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "NotifyDiscordOnInstallHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/event",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/event",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/discord-notify/event/notify-on-uninstalled.go",
+      "FuncName": "NewNotifyDiscordOnUninstallHandler",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/config",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "NotifyDiscordOnUninstallHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/discord-notify/event",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/api/realtime.go",
+      "FuncName": "NewWebsocketHandler",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Manager",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "IdentityResolver",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/resolver",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "HandlerRegistry",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/registry",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "EventBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "WebsocketHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/api/realtime.go",
+      "FuncName": "getTopic",
+      "Arguments": [
+        {
+          "Name": "[]byte",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+          "IsPointer": false,
+          "IsArray": true,
+          "IsSlice": true,
+          "ElemType": {
+            "Name": "byte",
+            "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+            "IsPointer": false,
+            "IsArray": false,
+            "IsSlice": false,
+            "ElemType": null
+          }
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/command",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/command/sendWsMessageHandler.go",
+      "FuncName": "NewSendWsMessageHandler",
+      "Arguments": [
+        {
+          "Name": "EventBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "CommandBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Manager",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "SendWsMessageHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/command",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/feature.go",
+      "FuncName": "NewFeatureRealtime",
+      "Arguments": [
+        {
+          "Name": "Registry",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "WebsocketHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/api",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "CommandProcessor",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "EventProcessor",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "EventBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "SendWsMessageHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/command",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "FeatureRealtime",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/registry",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/registry/registry.go",
+      "FuncName": "NewWsHandlerRegistry",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "HandlerRegistry",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/registry",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/resolver",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/resolver/query_resolver.go",
+      "FuncName": "NewQueryResolver",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "QueryResolver",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/resolver",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/room/manager.go",
+      "FuncName": "NewRoomManager",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Manager",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/room/member.go",
+      "FuncName": "NewMember",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Conn",
+          "ImportPath": "github.com/gofiber/contrib/websocket",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Member",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/realtime/room/room.go",
+      "FuncName": "NewRoom",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Room",
+          "ImportPath": "github.com/aiocean/wireset/feature/realtime/room",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/api",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/api/auth-checking.go",
+      "FuncName": "authorizeUrl",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/api",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/api",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/api",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/api/shop.go",
+      "FuncName": "NewShopHandler",
+      "Arguments": [
+        {
+          "Name": "ShopRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Facade",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "App",
+          "ImportPath": "github.com/gofiber/fiber/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ShopHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/api",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/command/example.go",
+      "FuncName": "NewExampleHandler",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "ExampleHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/command/install-core-webhooks.go",
+      "FuncName": "NewInstallWebhookHandler",
+      "Arguments": [
+        {
+          "Name": "ShopifyService",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "InstallWebhookHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/command/set_shop_state.go",
+      "FuncName": "NewSetShopStateHandler",
+      "Arguments": [
+        {
+          "Name": "StateRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "SetShopStateHandler",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/command",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/middleware",
+      "FilePath": "/Volumes/Data/Projects/wireset/feature/shopifyapp/middleware/authz.go",
+      "FuncName": "NewAuthzController",
+      "Arguments": [
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "TokenRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ShopRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "CacheService",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ShopifyService",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ShopifyAuthzMiddleware",
+          "ImportPath": "github.com/aiocean/wireset/feature/shopifyapp/middleware",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/fiberapp",
+      "FilePath": "/Volumes/Data/Projects/wireset/fiberapp/fiberapp.go",
+      "FuncName": "NewFiberApp",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "HealthRegistry",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "App",
+          "ImportPath": "github.com/gofiber/fiber/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/fiberapp",
+      "FilePath": "/Volumes/Data/Projects/wireset/fiberapp/health-registry.go",
+      "FuncName": "NewHealthRegistry",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "HealthRegistry",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/fiberapp",
+      "FilePath": "/Volumes/Data/Projects/wireset/fiberapp/registry.go",
+      "FuncName": "NewRegistry",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Registry",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/fiberapp",
+      "FilePath": "/Volumes/Data/Projects/wireset/fiberapp/registry.go",
+      "FuncName": "createHandlerID",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/fireauthsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/fireauthsvc/fireauthsvc.go",
+      "FuncName": "NewFirebaseAuthSvc",
+      "Arguments": [
+        {
+          "Name": "App",
+          "ImportPath": "firebase.google.com/go",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Client",
+          "ImportPath": "firebase.google.com/go/auth",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/fireauthsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/firebasesvc/firebasecfg.go",
+      "FuncName": "NewFirebaseCfg",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "FirebaseCfg",
+          "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/firebasesvc/firebasesvc.go",
+      "FuncName": "NewFirebaseSvc",
+      "Arguments": [
+        {
+          "Name": "FirebaseCfg",
+          "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "App",
+          "ImportPath": "firebase.google.com/go",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/firebasesvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/firestoresvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/firestoresvc/firestoresvc.go",
+      "FuncName": "NewFirestoreSvc",
+      "Arguments": [
+        {
+          "Name": "App",
+          "ImportPath": "firebase.google.com/go",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Client",
+          "ImportPath": "cloud.google.com/go/firestore",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/firestoresvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/firestoresvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/flagsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/flagsvc/flagsvc.go",
+      "FuncName": "NewFlagSvc",
+      "Arguments": [
+        {
+          "Name": "Context",
+          "ImportPath": "context",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "App",
+          "ImportPath": "firebase.google.com/go",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "FlagSvc",
+          "ImportPath": "github.com/aiocean/wireset/flagsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/flagsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/flagsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/geminisvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/geminisvc/geminisvc.go",
+      "FuncName": "NewGeminiSvcFromEnv",
+      "Arguments": [
+        {
+          "Name": "Context",
+          "ImportPath": "context",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "CacheService",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "GeminiSvc",
+          "ImportPath": "github.com/aiocean/wireset/geminisvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/geminisvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/geminisvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/logsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/logsvc/logsvc.go",
+      "FuncName": "DefaultConfig",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/logsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/logsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/logsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/logsvc/logsvc.go",
+      "FuncName": "NewLogger",
+      "Arguments": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/logsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/logsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/poolsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/poolsvc/poolsvc.go",
+      "FuncName": "DefaultPoolConfig",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "PoolConfig",
+          "ImportPath": "github.com/aiocean/wireset/poolsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/poolsvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/poolsvc/poolsvc.go",
+      "FuncName": "NewPool",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "PoolConfig",
+          "ImportPath": "github.com/aiocean/wireset/poolsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "PoolSvc",
+          "ImportPath": "github.com/aiocean/wireset/poolsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/poolsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/poolsvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/prometheussvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/prometheussvc/prometheussvc.go",
+      "FuncName": "NewPrometheusSvc",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Registerer",
+          "ImportPath": "github.com/prometheus/client_golang/prometheus",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/bus.go",
+      "FuncName": "NewCommandBus",
+      "Arguments": [
+        {
+          "Name": "Publisher",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "CommandBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/bus.go",
+      "FuncName": "NewEventBus",
+      "Arguments": [
+        {
+          "Name": "Publisher",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "EventBus",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/bus.go",
+      "FuncName": "NewEventProcessor",
+      "Arguments": [
+        {
+          "Name": "Router",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Subscriber",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "EventProcessor",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/bus.go",
+      "FuncName": "NewCommandProcessor",
+      "Arguments": [
+        {
+          "Name": "Router",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Subscriber",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "CommandProcessor",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/components/cqrs",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/goroutine.go",
+      "FuncName": "NewGoChannel",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "GoChannel",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/pubsub/gochannel",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/goroutine.go",
+      "FuncName": "NewGoroutineSubscriber",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "GoChannel",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/pubsub/gochannel",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Subscriber",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/goroutine.go",
+      "FuncName": "NewGoroutinePublisher",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "GoChannel",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/pubsub/gochannel",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Publisher",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/redis.go",
+      "FuncName": "NewRedisSubscriber",
+      "Arguments": [
+        {
+          "Name": "redis.Client",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Subscriber",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill-redisstream/pkg/redisstream",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/redis.go",
+      "FuncName": "NewRedisPublisher",
+      "Arguments": [
+        {
+          "Name": "redis.Client",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Publisher",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill-redisstream/pkg/redisstream",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/pubsub",
+      "FilePath": "/Volumes/Data/Projects/wireset/pubsub/router.go",
+      "FuncName": "NewRouter",
+      "Arguments": [
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "Router",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/pubsub",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/redissvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/redissvc/redissvc.go",
+      "FuncName": "getEnvVar",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/redissvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/redissvc/redissvc.go",
+      "FuncName": "RedisConfigFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "redis.Options",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/redissvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/redissvc/redissvc.go",
+      "FuncName": "NewRedisClient",
+      "Arguments": [
+        {
+          "Name": "Context",
+          "ImportPath": "context",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "redis.Options",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "redis.Client",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/redissvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/repository",
+      "FilePath": "/Volumes/Data/Projects/wireset/repository/plan-repository.go",
+      "FuncName": "NewMemoryPlanRepository",
+      "Arguments": [
+        {
+          "Name": "[]*Plan",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": true,
+          "IsSlice": true,
+          "ElemType": {
+            "Name": "Plan",
+            "ImportPath": "github.com/aiocean/wireset/repository",
+            "IsPointer": true,
+            "IsArray": false,
+            "IsSlice": false,
+            "ElemType": null
+          }
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "MemoryPlanRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/repository",
+      "FilePath": "/Volumes/Data/Projects/wireset/repository/shop-repository.go",
+      "FuncName": "NewShopRepository",
+      "Arguments": [
+        {
+          "Name": "Client",
+          "ImportPath": "cloud.google.com/go/firestore",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ShopRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/repository",
+      "FilePath": "/Volumes/Data/Projects/wireset/repository/token-repository.go",
+      "FuncName": "NewTokenRepository",
+      "Arguments": [
+        {
+          "Name": "Client",
+          "ImportPath": "cloud.google.com/go/firestore",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "TokenRepository",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/repository",
+      "FilePath": "/Volumes/Data/Projects/wireset/repository/util.go",
+      "FuncName": "NormalizeShopID",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/repository",
+      "FilePath": "/Volumes/Data/Projects/wireset/repository/util.go",
+      "FuncName": "DenormalizeShopID",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/repository",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/server",
+      "FilePath": "/Volumes/Data/Projects/wireset/server/api.go",
+      "FuncName": "NewApiServer",
+      "Arguments": [
+        {
+          "Name": "Router",
+          "ImportPath": "github.com/ThreeDotsLabs/watermill/message",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "App",
+          "ImportPath": "github.com/gofiber/fiber/v2",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Registry",
+          "ImportPath": "github.com/aiocean/wireset/fiberapp",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "[]Feature",
+          "ImportPath": "github.com/aiocean/wireset/server",
+          "IsPointer": false,
+          "IsArray": true,
+          "IsSlice": true,
+          "ElemType": {
+            "Name": "Feature",
+            "ImportPath": "github.com/aiocean/wireset/server",
+            "IsPointer": false,
+            "IsArray": false,
+            "IsSlice": false,
+            "ElemType": null
+          }
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ApiServer",
+          "ImportPath": "github.com/aiocean/wireset/server",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/shopifysvc/config.go",
+      "FuncName": "ConfigFromEnv",
+      "Arguments": null,
+      "ReturnTypes": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/shopifysvc/exchange_access_token.go",
+      "FuncName": "ExchangeAccessToken",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "AccessTokenResponse",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/shopifysvc/shopifyapp.go",
+      "FuncName": "NewShopifyApp",
+      "Arguments": [
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "App",
+          "ImportPath": "github.com/bold-commerce/go-shopify/v3",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/shopifysvc/shopify.go",
+      "FuncName": "NewShopifyService",
+      "Arguments": [
+        {
+          "Name": "ConfigService",
+          "ImportPath": "github.com/aiocean/wireset/configsvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Config",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "CacheService",
+          "ImportPath": "github.com/aiocean/wireset/cachesvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "Logger",
+          "ImportPath": "go.uber.org/zap",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "ShopifyService",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "ast.FuncType",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": true,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        },
+        {
+          "Name": "error",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": true,
+      "HasError": true
+    },
+    {
+      "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+      "FilePath": "/Volumes/Data/Projects/wireset/shopifysvc/shopify.go",
+      "FuncName": "NormaizeShopifyDomain",
+      "Arguments": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "ReturnTypes": [
+        {
+          "Name": "string",
+          "ImportPath": "github.com/aiocean/wireset/shopifysvc",
+          "IsPointer": false,
+          "IsArray": false,
+          "IsSlice": false,
+          "ElemType": null
+        }
+      ],
+      "HasCleanup": false,
+      "HasError": false
+    }
+  ],
+  "TypeReplacements": {},
+  "ModulePath": "github.com/aiocean/wireset"
+}
