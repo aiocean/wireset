@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2024-09-30)
+
+
+### Features
+
+* init ([3110578](https://github.com/aiocean/wireset/commit/3110578aa343af96a8a5ffc349ac1030ff7be108))
+
 ## [1.1.0](https://github.com/aiocean/wireset/compare/v1.0.0...v1.1.0) (2024-09-30)
 
 
