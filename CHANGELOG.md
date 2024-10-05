@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/aiocean/wireset/compare/v1.2.0...v1.2.1) (2024-10-05)
+
+
+### Bug Fixes
+
+* update metafield namespace & value type ([81c0faf](https://github.com/aiocean/wireset/commit/81c0faf90aa7098bc4ab31cc826ad380d240d6fc))
+
 ## [1.2.0](https://github.com/aiocean/wireset/compare/v1.1.0...v1.2.0) (2024-09-30)
 
 
