@@ -380,10 +380,8 @@ func (c *ShopifyClient) GetCurrentApplicationInstallationID() (string, error) {
 	return installationID, nil
 }
 
-const appDataMetafieldNamespace = "aio_decor"
-
 // GetAppDataMetaField returns the value of the app data metafield
-func (c *ShopifyClient) GetAppDataMetaField(ownerId, key string) (string, error) {
+func (c *ShopifyClient) GetAppDataMetaField(ownerId, namespace, key string) (string, error) {
 	requestBody := &GraphQlRequest{
 		Query: `query GetAppDataMetafield($metafieldsQueryInput: [MetafieldsQueryInput!]!) {
             metafields(query: $metafieldsQueryInput) {
@@ -400,7 +398,7 @@ func (c *ShopifyClient) GetAppDataMetaField(ownerId, key string) (string, error)
 		OperationName: "GetAppDataMetafield",
 		Variables: map[string]interface{}{
 			"metafieldsQueryInput": map[string]interface{}{
-				"namespace": appDataMetafieldNamespace,
+				"namespace": namespace,
 				"key":       key,
 				"ownerId":   ownerId,
 			},
@@ -449,7 +447,7 @@ func (c *ShopifyClient) GetShopMetaField(namespace, key string) (string, error) 
 	return "", nil
 }
 
-func (c *ShopifyClient) SetShopMetaField(ownerId, key, value string) error {
+func (c *ShopifyClient) SetShopMetaField(ownerId, namespace, key, valueType, value string) error {
 	requestBody := &GraphQlRequest{
 		Query: `mutation CreateShopMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
 			metafieldsSet(metafields: $metafieldsSetInput) {
@@ -469,9 +467,9 @@ func (c *ShopifyClient) SetShopMetaField(ownerId, key, value string) error {
 		Variables: map[string]interface{}{
 			"metafieldsSetInput": []map[string]interface{}{
 				{
-					"namespace": "aio_decor",
+					"namespace": namespace,
 					"key":       key,
-					"type":      "single_line_text_field",
+					"type":      valueType,
 					"value":     value,
 					"ownerId":   ownerId,
 				},
@@ -487,7 +485,7 @@ func (c *ShopifyClient) SetShopMetaField(ownerId, key, value string) error {
 	return nil
 }
 
-func (c *ShopifyClient) SetAppDataMetaField(ownerId, key, value string) error {
+func (c *ShopifyClient) SetAppDataMetaField(ownerId, namespace, key, valueType, value string) error {
 	requestBody := &GraphQlRequest{
 		Query: `mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
             metafieldsSet(metafields: $metafieldsSetInput) {
@@ -507,9 +505,9 @@ func (c *ShopifyClient) SetAppDataMetaField(ownerId, key, value string) error {
 		Variables: map[string]interface{}{
 			"metafieldsSetInput": []map[string]interface{}{
 				{
-					"namespace": appDataMetafieldNamespace,
+					"namespace": namespace,
 					"key":       key,
-					"type":      "single_line_text_field",
+					"type":      valueType,
 					"value":     value,
 					"ownerId":   ownerId,
 				},
