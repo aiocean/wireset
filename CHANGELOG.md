@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/aiocean/wireset/compare/v1.2.1...v1.2.2) (2024-10-16)
+
+
+### Bug Fixes
+
+* skip auth for charge confirmation & update shopify api ([c8ad28e](https://github.com/aiocean/wireset/commit/c8ad28e7d07896fbdcc301db6f1dc86daec84d21))
+
 ## [1.2.1](https://github.com/aiocean/wireset/compare/v1.2.0...v1.2.1) (2024-10-05)
 
 
