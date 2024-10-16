@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/aiocean/wireset/compare/v1.2.2...v1.3.0) (2024-10-16)
+
+
+### Features
+
+* **mongodb:** add MongoDB client configuration and connection ([222c446](https://github.com/aiocean/wireset/commit/222c44612da1bd3340aef2f402b8b3c206f8f1f0))
+
 ## [1.2.2](https://github.com/aiocean/wireset/compare/v1.2.1...v1.2.2) (2024-10-16)
 
 
