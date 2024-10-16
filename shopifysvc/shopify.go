@@ -570,9 +570,8 @@ func (c *ShopifyClient) GetActiveSubscriptions() (*Subscription, error) {
 	return subscription, nil
 }
 
-func (c *ShopifyClient) CreateSubscription(price float32) (*gjson.Result, error) {
-	name := "premium"
-	returnUrl := "https://admin.shopify.com/store/" + c.ShopifyDomain + "/apps/" + c.ShopifyConfig.ClientId
+func (c *ShopifyClient) CreateSubscription(name string, price float32, interval string, returnUrl string, isTest bool) (*gjson.Result, error) {
+	// returnUrl := "https://admin.shopify.com/store/" + c.ShopifyDomain + "/apps/" + c.ShopifyConfig.ClientId
 	lineItems := []map[string]interface{}{
 		{
 			"plan": map[string]interface{}{
@@ -581,7 +580,7 @@ func (c *ShopifyClient) CreateSubscription(price float32) (*gjson.Result, error)
 						"amount":       price,
 						"currencyCode": "USD",
 					},
-					"interval": "EVERY_30_DAYS",
+					"interval": interval,
 				},
 			},
 		},
@@ -592,12 +591,13 @@ func (c *ShopifyClient) CreateSubscription(price float32) (*gjson.Result, error)
             $name: String!
             $lineItems: [AppSubscriptionLineItemInput!]!
             $returnUrl: URL!
+			$test: Boolean!
         ) {
             appSubscriptionCreate(
                 name: $name
                 returnUrl: $returnUrl
                 lineItems: $lineItems
-                test: true
+                test: $test
             ) {
                 userErrors {
                     field
@@ -613,12 +613,23 @@ func (c *ShopifyClient) CreateSubscription(price float32) (*gjson.Result, error)
 			"name":      name,
 			"returnUrl": returnUrl,
 			"lineItems": lineItems,
+			"test":      isTest,
 		},
 	}
 
 	response, err := c.DoGraphqlRequest(requestBody)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create subscription")
+	}
+
+	return response, nil
+}
+
+func (c *ShopifyClient) GetChargeBillingInfo(chargeID string) (*gjson.Result, error) {
+	url := fmt.Sprintf("https://%s/admin/api/%s/recurring_application_charges/%s.json", c.ShopifyDomain, c.ApiVersion, chargeID)
+	response, err := c.DoRestRequest("GET", url, nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get charge info")
 	}
 
 	return response, nil

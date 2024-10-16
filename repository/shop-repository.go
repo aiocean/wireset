@@ -68,6 +68,8 @@ func (r *ShopRepository) IsDomainExists(ctx context.Context, domain string) (boo
 }
 
 func (r *ShopRepository) Create(ctx context.Context, shop *shopifysvc.Shop) error {
+	shop.IsTest = false
+
 	normalizedID, err := NormalizeShopID(shop.ID)
 	if err != nil {
 		return errors.WithMessage(err, "normalize shop id")

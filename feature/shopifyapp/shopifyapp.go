@@ -54,8 +54,8 @@ type FeatureCore struct {
 	AuthzMiddleware *middleware.ShopifyAuthzMiddleware
 
 	AuthHandler    *api.AuthHandler
-	WebhookHandler *api.WebhookHandler
-	GdprHandler    *api.GdprHandler
+	WebhookHandler       *api.WebhookHandler
+	GdprHandler          *api.GdprHandler
 
 	EventProcessor   *cqrs.EventProcessor
 	CommandProcessor *cqrs.CommandProcessor

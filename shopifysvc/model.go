@@ -13,6 +13,7 @@ type Shop struct {
 	CountryCode          string `json:"countryCode" firestore:"countryCode" bson:"countryCode"`
 	Domain               string `json:"domain" firestore:"domain" bson:"domain"`
 	MyshopifyDomain      string `json:"myshopifyDomain" firestore:"myshopifyDomain" bson:"myshopifyDomain"`
+	IsTest               bool   `json:"isTest" firestore:"isTest" bson:"isTest"`
 	TimezoneAbbreviation string `json:"timezoneAbbreviation" firestore:"timezoneAbbreviation" bson:"timezoneAbbreviation"`
 	IanaTimezone         string `json:"ianaTimezone" firestore:"ianaTimezone" bson:"ianaTimezone"`
 	CurrencyCode         string `json:"currencyCode" firestore:"currencyCode" bson:"currencyCode"`

@@ -64,6 +64,10 @@ func (s *ShopifyAuthzMiddleware) IsAuthRequired(path string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(path, "/charge/confirmation") {
+		return false
+	}
+
 	return true
 }
 
