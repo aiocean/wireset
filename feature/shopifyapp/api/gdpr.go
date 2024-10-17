@@ -12,6 +12,7 @@ type GdprHandler struct {
 }
 
 func (g *GdprHandler) CustomerDataRequest(ctx *fiber.Ctx) error {
+	
 	return ctx.SendStatus(200)
 }
 

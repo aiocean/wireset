@@ -7,6 +7,7 @@ import (
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/aiocean/wireset/feature/realtime/api"
 	"github.com/aiocean/wireset/feature/realtime/command"
+	"github.com/aiocean/wireset/feature/realtime/models"
 	"github.com/aiocean/wireset/feature/realtime/registry"
 	"github.com/aiocean/wireset/feature/realtime/room"
 	"github.com/aiocean/wireset/fiberapp"
@@ -55,23 +56,25 @@ func NewFeatureRealtime(
 }
 
 func (f *FeatureRealtime) Name() string {
-	return "realtime"
+	return "realtime-feature"
 }
+
 
 func (f *FeatureRealtime) Init() error {
 	if err := f.CommandProcessor.AddHandlers(f.SendWsMessageHandler); err != nil {
-		return errors.Wrap(err, "add command api")
+		return errors.Wrap(err, "failed to add command handler")
 	}
 
-	f.HttpRegistry.AddHttpMiddleware("/api/v1/ws", f.WebsocketHandler.Upgrade)
+	f.HttpRegistry.AddHttpMiddleware(models.WebsocketEndpoint, f.WebsocketHandler.Upgrade)
 	f.HttpRegistry.AddHttpHandlers(
 		&fiberapp.HttpHandler{
 			Method: fiber.MethodGet,
-			Path:   "/api/v1/ws",
+			Path:   models.WebsocketEndpoint,
 			Handlers: []fiber.Handler{
 				websocket.New(f.WebsocketHandler.Handle),
 			},
 		},
 	)
+
 	return nil
 }
