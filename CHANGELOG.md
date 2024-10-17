@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.0](https://github.com/aiocean/wireset/compare/v1.3.0...v1.4.0) (2024-10-17)
+
+
+### Features
+
+* improve Shopify app initialization and add documentation ([ca523c0](https://github.com/aiocean/wireset/commit/ca523c09d7c8ce9c773600bc95ba5f56bf9b1513))
+* refactor event handlers and improve context handling ([fb193ab](https://github.com/aiocean/wireset/commit/fb193abe3986a9148151bb48ecf8e0f9305688c4))
+* refactor local key constants and update setLocal function ([488fa6d](https://github.com/aiocean/wireset/commit/488fa6de5316d338dea1feb288ff9ea9eccefb3a))
+
 ## [1.3.0](https://github.com/aiocean/wireset/compare/v1.2.2...v1.3.0) (2024-10-16)
 
 
