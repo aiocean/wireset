@@ -38,6 +38,7 @@ func (r *ShopRepository) IsShopExists(ctx context.Context, shopID string) (bool,
 	if err != nil {
 		return false, errors.WithMessage(err, "normalize shop id")
 	}
+
 	snapshot, err := r.firestoreClient.Collection("shops").Doc(normalizedID).Get(ctx)
 	if err != nil {
 		if status.Code(err) == codes.NotFound {
@@ -132,7 +133,6 @@ func (r *ShopRepository) Get(ctx context.Context, shopID string) (*shopifysvc.Sh
 }
 
 func (r *ShopRepository) GetByDomain(ctx context.Context, domain string) (*shopifysvc.Shop, error) {
-
 	cur := r.firestoreClient.Collection("shops").Where("myshopifyDomain", "==", domain).Documents(ctx)
 	defer cur.Stop()
 

@@ -190,18 +190,22 @@ func setLocal(c *fiber.Ctx, authData *AuthData) {
 	c.Locals(LocalKeySid, authData.Sid)
 }
 
-func GetMyShopifyDomain(c *fiber.Ctx) string {
-	return c.Locals(LocalKeyMyshopifyDomain).(string)
+func GetMyShopifyDomain(c *fiber.Ctx) (string, bool) {
+	myshopifyDomain, ok := c.Locals(LocalKeyMyshopifyDomain).(string)
+	return myshopifyDomain, ok
 }
 
-func GetAccessToken(c *fiber.Ctx) string {
-	return c.Locals(LocalKeyAccessToken).(string)
+func GetAccessToken(c *fiber.Ctx) (string, bool) {
+	accessToken, ok := c.Locals(LocalKeyAccessToken).(string)
+	return accessToken, ok
 }
 
-func GetShopID(c *fiber.Ctx) string {
-	return c.Locals(LocalKeyShopID).(string)
+func GetShopID(c *fiber.Ctx) (string, bool) {
+	shopID, ok := c.Locals(LocalKeyShopID).(string)
+	return shopID, ok
 }
 
-func GetSid(c *fiber.Ctx) string {
-	return c.Locals(LocalKeySid).(string)
+func GetSid(c *fiber.Ctx) (string, bool) {
+	sid, ok := c.Locals(LocalKeySid).(string)
+	return sid, ok
 }

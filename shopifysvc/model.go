@@ -2,21 +2,23 @@ package shopifysvc
 
 import (
 	"strings"
+	"time"
 
 	"github.com/tidwall/gjson"
 )
 
 type Shop struct {
-	ID                   string `json:"id" firestore:"id" bson:"id"`
-	Name                 string `json:"name" firestore:"name" bson:"name"`
-	Email                string `json:"email" firestore:"email" bson:"email"`
-	CountryCode          string `json:"countryCode" firestore:"countryCode" bson:"countryCode"`
-	Domain               string `json:"domain" firestore:"domain" bson:"domain"`
-	MyshopifyDomain      string `json:"myshopifyDomain" firestore:"myshopifyDomain" bson:"myshopifyDomain"`
-	IsTest               bool   `json:"isTest" firestore:"isTest" bson:"isTest"`
-	TimezoneAbbreviation string `json:"timezoneAbbreviation" firestore:"timezoneAbbreviation" bson:"timezoneAbbreviation"`
-	IanaTimezone         string `json:"ianaTimezone" firestore:"ianaTimezone" bson:"ianaTimezone"`
-	CurrencyCode         string `json:"currencyCode" firestore:"currencyCode" bson:"currencyCode"`
+	ID                   string     `json:"id" firestore:"id" bson:"id"`
+	Name                 string     `json:"name" firestore:"name" bson:"name"`
+	Email                string     `json:"email" firestore:"email" bson:"email"`
+	CountryCode          string     `json:"countryCode" firestore:"countryCode" bson:"countryCode"`
+	Domain               string     `json:"domain" firestore:"domain" bson:"domain"`
+	MyshopifyDomain      string     `json:"myshopifyDomain" firestore:"myshopifyDomain" bson:"myshopifyDomain"`
+	IsTest               bool       `json:"isTest" firestore:"isTest" bson:"isTest"`
+	TimezoneAbbreviation string     `json:"timezoneAbbreviation" firestore:"timezoneAbbreviation" bson:"timezoneAbbreviation"`
+	IanaTimezone         string     `json:"ianaTimezone" firestore:"ianaTimezone" bson:"ianaTimezone"`
+	CurrencyCode         string     `json:"currencyCode" firestore:"currencyCode" bson:"currencyCode"`
+	UninstalledAt        *time.Time `json:"uninstalledAt" firestore:"uninstalledAt" bson:"uninstalledAt"`
 }
 
 type Product struct {

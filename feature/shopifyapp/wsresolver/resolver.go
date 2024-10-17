@@ -6,6 +6,7 @@ import (
 	"errors"
 
 	"github.com/aiocean/wireset/feature/realtime/resolver"
+	"github.com/aiocean/wireset/feature/shopifyapp/middleware"
 	"github.com/aiocean/wireset/shopifysvc"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/wire"
@@ -23,7 +24,7 @@ type JwtIdentityResolver struct {
 }
 
 func (j JwtIdentityResolver) Resolve(c *fiber.Ctx) (*resolver.Identity, error) {
-	myshopifyDomain, ok := c.Locals("myshopifyDomain").(string)
+	myshopifyDomain, ok := middleware.GetMyShopifyDomain(c)
 	if !ok {
 		return nil, errors.New("myshopifyDomain not found in context")
 	}
