@@ -2,6 +2,7 @@ package firebasesvc
 
 import (
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"os"
 )
@@ -13,7 +14,7 @@ type FirebaseCfg struct {
 func NewFirebaseCfg() (*FirebaseCfg, error) {
 	credential := os.Getenv("FIREBASE_CREDENTIAL")
 	if credential == "" {
-		return nil, fmt.Errorf("FIREBASE_CREDENTIAL is empty")
+		return nil, errors.New("FIREBASE_CREDENTIAL is empty")
 	}
 
 	//credential is base64 encoded

@@ -59,7 +59,6 @@ func (f *FeatureRealtime) Name() string {
 	return "realtime-feature"
 }
 
-
 func (f *FeatureRealtime) Init() error {
 	if err := f.CommandProcessor.AddHandlers(f.SendWsMessageHandler); err != nil {
 		return errors.Wrap(err, "failed to add command handler")

@@ -3,15 +3,16 @@ package discordserver
 import (
 	"context"
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
 	"github.com/aiocean/wireset/server"
 	"github.com/bwmarrin/discordgo"
 	"github.com/google/wire"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
 )
 
 // DefaultWireset is a wire provider set that provides a DiscordServer
@@ -127,7 +128,7 @@ func (s *DiscordServer) messageCreate(session *discordgo.Session, m *discordgo.M
 	if m.Content == "!ping" {
 		_, err := session.ChannelMessageSend(m.ChannelID, "Pong!")
 		if err != nil {
-			s.Logger.Error("Failed to send message", zap.Error(err))
+			s.Logger.Error("Failed to send message!", zap.Error(err))
 		}
 	}
 }
