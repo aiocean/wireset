@@ -1,8 +1,4 @@
----
-title: Getting Started
----
-
-# Getting Started with Efficient Wireset
+# Getting Started
 
 Welcome to Efficient Wireset! This guide will help you get started with our collection of common wireset configurations for developing applications on Shopify.
 

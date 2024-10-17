@@ -15,7 +15,9 @@ The Shopify App Wireset provides a pre-configured setup for building Shopify app
 
 3. **Declare your feature list:**
 
-   ```go:main.go
+**main.go**
+
+   ```go
    package main
    import (
        "github.com/aiocean/wireset"
@@ -33,7 +35,9 @@ The Shopify App Wireset provides a pre-configured setup for building Shopify app
 
 4. **Define your wire dependencies:**
 
-   ```go:wire.go
+**wire.go**
+
+   ```go
    //go:build wireinject
    // +build wireinject
 

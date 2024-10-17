@@ -1,4 +1,5 @@
 import {defineConfig} from 'vitepress'
+import { generateSidebar } from 'vitepress-sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,27 +11,11 @@ export default defineConfig({
             {text: 'Wiresets', link: '/wiresets/'}
         ],
 
-        sidebar: [
-            {
-                text: 'Guide',
-                items: [
-                    {text: 'Getting started', link: '/guide/getting-started.md'},
-                    {text: 'Normal app', link: '/guide/normal-app.md'},
-                    {text: 'Shopify app', link: '/guide/shopify-app.md'},
-                ]
-            },
-            {
-                text: 'Wiresets',
-                items: [
-                    {text: 'Configuration', link: '/wiresets/configuration'},
-                    {text: 'Asset Handling', link: '/wiresets/assets'},
-                    {text: 'Markdown Extensions', link: '/wiresets/markdown'},
-                    {text: 'Using Vue in Markdown', link: '/wiresets/using-vue'},
-                    {text: 'Deploying', link: '/wiresets/deploy'}
-                ]
-            }
-        ],
-
+        sidebar: generateSidebar({
+            documentRootPath: '/docs',
+            useTitleFromFileHeading: true,
+            capitalizeFirst: true
+        }),
         socialLinks: [
             {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
         ]
