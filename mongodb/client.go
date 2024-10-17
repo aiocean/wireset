@@ -2,6 +2,7 @@ package mongodb
 
 import (
 	"context"
+	"errors"
 	"os"
 
 	"github.com/google/wire"
@@ -19,15 +20,15 @@ var MongoFromEnvWireSet = wire.NewSet(
 	NewMongoDbClient,
 )
 
-func NewConfigFromEnv() *Config {
+func NewConfigFromEnv() (*Config, error) {
 	mongoDBURI := os.Getenv("MONGODB_URI")
 	if mongoDBURI == "" {
-		panic("MONGODB_CONNECTION_URI is not found")
+		return nil, errors.New("MONGODB_CONNECTION_URI is not found")
 	}
 
 	return &Config{
 		MongoDBURI: mongoDBURI,
-	}
+	}, nil
 }
 
 func NewMongoDbClient(config *Config, logger *zap.Logger) (*mongo.Client, func(), error) {

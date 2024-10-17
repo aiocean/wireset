@@ -7,6 +7,7 @@ import (
 	"github.com/google/wire"
 )
 
+// ConfigService holds configuration details for the application
 type ConfigService struct {
 	ServiceName string
 	ServiceUrl  string

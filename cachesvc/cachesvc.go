@@ -1,3 +1,4 @@
+// Package cachesvc provides a caching service
 package cachesvc
 
 import (
