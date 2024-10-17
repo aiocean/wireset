@@ -16,6 +16,13 @@ import (
 	"go.uber.org/zap"
 )
 
+const (
+	LocalKeyMyshopifyDomain = "myshopifyDomain"
+	LocalKeyAccessToken     = "accessToken"
+	LocalKeyShopID          = "shopID"
+	LocalKeySid             = "sid"
+)
+
 type ShopifyAuthzMiddleware struct {
 	configService   *configsvc.ConfigService
 	shopifyConfig   *shopifysvc.Config
@@ -177,8 +184,24 @@ func (s *ShopifyAuthzMiddleware) Handle(c *fiber.Ctx) error {
 }
 
 func setLocal(c *fiber.Ctx, authData *AuthData) {
-	c.Locals("myshopifyDomain", authData.MyshopifyDomain)
-	c.Locals("accessToken", authData.AccessToken)
-	c.Locals("shopID", authData.ShopID)
-	c.Locals("sid", authData)
+	c.Locals(LocalKeyMyshopifyDomain, authData.MyshopifyDomain)
+	c.Locals(LocalKeyAccessToken, authData.AccessToken)
+	c.Locals(LocalKeyShopID, authData.ShopID)
+	c.Locals(LocalKeySid, authData.Sid)
+}
+
+func GetMyShopifyDomain(c *fiber.Ctx) string {
+	return c.Locals(LocalKeyMyshopifyDomain).(string)
+}
+
+func GetAccessToken(c *fiber.Ctx) string {
+	return c.Locals(LocalKeyAccessToken).(string)
+}
+
+func GetShopID(c *fiber.Ctx) string {
+	return c.Locals(LocalKeyShopID).(string)
+}
+
+func GetSid(c *fiber.Ctx) string {
+	return c.Locals(LocalKeySid).(string)
 }
