@@ -98,7 +98,9 @@ func (f *FeatureCore) Init() error {
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodGet,
 			Path:     "/auth/shopify/checkin",
-			Handlers: []fiber.Handler{f.AuthHandler.Checkin},
+			Handlers: []fiber.Handler{
+				f.AuthHandler.Checkin,
+			},
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodGet,

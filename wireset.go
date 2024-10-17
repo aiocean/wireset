@@ -15,6 +15,7 @@ import (
 	"github.com/aiocean/wireset/shopifysvc"
 )
 
+// Common provides common dependencies for all apps
 var Common = wire.NewSet(
 	fiberapp.DefaultWireset,
 	server.DefaultWireset,
@@ -47,3 +48,4 @@ var MinimalApp = Common
 var CliApp = wire.NewSet(
 	logsvc.DefaultWireset,
 )
+
