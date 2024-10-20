@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/aiocean/wireset/compare/v1.6.0...v1.7.0) (2024-10-20)
+
+
+### Features
+
+* implement subscription ([fac743b](https://github.com/aiocean/wireset/commit/fac743bb3e1dbbd9fe8eaad1865fd76df722c84c))
+
 ## [1.6.0](https://github.com/aiocean/wireset/compare/v1.5.0...v1.6.0) (2024-10-20)
 
 
