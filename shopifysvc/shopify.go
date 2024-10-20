@@ -525,6 +525,7 @@ func (c *ShopifyClient) SetAppDataMetaField(ownerId, namespace, key, valueType, 
 
 type Subscription struct {
 	ID                        string
+	Name                      string
 	TrialDays                 int
 	CurrentPeriodEnd          string
 	Status                    string
@@ -554,6 +555,7 @@ func (c *ShopifyClient) GetActiveSubscriptions() (*Subscription, error) {
 	if err != nil {
 		return nil, errors.WithMessage(err, "failed to get subscription")
 	}
+	
 
 	subscriptionData := response.Get("currentAppInstallation.activeSubscriptions.0")
 	if !subscriptionData.Exists() {
@@ -562,6 +564,7 @@ func (c *ShopifyClient) GetActiveSubscriptions() (*Subscription, error) {
 
 	subscription := &Subscription{
 		ID:               subscriptionData.Get("id").String(),
+		Name:             subscriptionData.Get("name").String(),
 		TrialDays:        int(subscriptionData.Get("trialDays").Int()),
 		CurrentPeriodEnd: subscriptionData.Get("currentPeriodEnd").String(),
 		Status:           subscriptionData.Get("status").String(),

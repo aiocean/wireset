@@ -2,7 +2,7 @@ package casbinsvc
 
 import (
 	"github.com/casbin/casbin/v2"
-	model "github.com/casbin/casbin/v2/model"
+	"github.com/casbin/casbin/v2/model"
 	"github.com/casbin/casbin/v2/persist"
 	"github.com/pkg/errors"
 )

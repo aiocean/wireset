@@ -19,7 +19,6 @@ The Shop Repository Wireset provides a pre-configured setup for interacting with
 
 ## Usage
 
-
 2. **Declare the dependency provider in your wire.go file:**
 
    ```go

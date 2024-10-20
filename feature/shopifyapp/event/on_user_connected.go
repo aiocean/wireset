@@ -15,6 +15,7 @@ type OnUserConnectedHandler struct {
 	CommandBus *cqrs.CommandBus
 	TokenRepo  *repository.TokenRepository
 	ShopifySvc *shopifysvc.ShopifyService
+	ShopRepo   *repository.ShopRepository
 }
 
 func (h *OnUserConnectedHandler) HandlerName() string {
@@ -29,14 +30,34 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 	evt := event.(*models.UserJoinedEvt)
 	shopifyDomain := evt.RoomID
 
+	shop, err := h.ShopRepo.GetByDomain(ctx, shopifyDomain)
+	if err != nil {
+		return err
+	}
+
+	accessToken, err := h.TokenRepo.GetToken(ctx, shop.ID)
+	if err != nil {
+		return err
+	}
+
+	shopifyClient := h.ShopifySvc.GetShopifyClient(shopifyDomain, accessToken.AccessToken)
+
+	activeSubscription, err := shopifyClient.GetActiveSubscriptions()
+	if err != nil {
+		return err
+	}
+
+
 	return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
 		RoomID:   evt.RoomID,
 		Username: evt.UserName,
 		Payload: models.WebsocketMessage[models2.SetActivateSubscriptionPayload]{
 			Topic: models2.TopicSetActivateSubscription,
 			Payload: models2.SetActivateSubscriptionPayload{
-				ID:   shopifyDomain,
-				Name: evt.UserName,
+				ID:     activeSubscription.ID,
+				Status: activeSubscription.Status,
+				TrialDays: activeSubscription.TrialDays,
+				Name:      activeSubscription.Name,
 			},
 		},
 	})
