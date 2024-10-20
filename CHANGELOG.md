@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/aiocean/wireset/compare/v1.5.0...v1.6.0) (2024-10-20)
+
+
+### Features
+
+* support free subscription by default ([1efa6ba](https://github.com/aiocean/wireset/commit/1efa6ba17e63ef3509298026260778e51264ee20))
+* update check for subscription ([40cd0b7](https://github.com/aiocean/wireset/commit/40cd0b7d16075cec31e7e68c34c51b113cf6c8a3))
+
 ## [1.5.0](https://github.com/aiocean/wireset/compare/v1.4.0...v1.5.0) (2024-10-17)
 
 
