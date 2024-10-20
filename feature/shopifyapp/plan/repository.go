@@ -46,6 +46,11 @@ func (r *PlanRepository) GetPlanByID(ID string) (*models.Plan, error) {
 func (r *PlanRepository) IsPlanExists(ID string) (bool, error) {
 	var plan models.Plan
 	if err := r.PlansCollection.FindOne(context.Background(), bson.M{"id": ID}).Decode(&plan); err != nil {
+
+		if err == mongo.ErrNoDocuments {
+			return false, nil
+		}
+
 		return false, err
 	}
 	return true, nil
