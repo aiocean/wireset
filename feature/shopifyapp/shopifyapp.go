@@ -7,6 +7,7 @@ import (
 	"github.com/aiocean/wireset/feature/shopifyapp/command"
 	"github.com/aiocean/wireset/feature/shopifyapp/event"
 	"github.com/aiocean/wireset/feature/shopifyapp/middleware"
+	"github.com/aiocean/wireset/feature/shopifyapp/plan"
 	"github.com/aiocean/wireset/fiberapp"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/wire"
@@ -17,13 +18,16 @@ var DefaultWireset = wire.NewSet(
 
 	command.NewInstallWebhookHandler,
 	command.NewSetShopStateHandler,
+
+	wire.Struct(new(plan.Registry), "*"),
+	plan.NewPlanRepository,
+
 	wire.Struct(new(command.SendMessageHandler), "*"),
 
 	wire.Struct(new(event.CreateUserHandler), "*"),
 	wire.Struct(new(event.WelcomeHandler), "*"),
 	wire.Struct(new(event.OnUserConnectedHandler), "*"),
 	wire.Struct(new(event.OnCheckedInHandler), "*"),
-	wire.Struct(new(event.SubscriptionCheckHandler), "*"),
 
 	middleware.NewAuthzController,
 
@@ -42,7 +46,6 @@ type FeatureCore struct {
 	WelcomeEvtHandler        *event.WelcomeHandler
 	OnUserConnectedHandler   *event.OnUserConnectedHandler
 	OnCheckedInHandler       *event.OnCheckedInHandler
-	SubscriptionCheckHandler *event.SubscriptionCheckHandler
 
 	AuthzMiddleware *middleware.ShopifyAuthzMiddleware
 
@@ -75,7 +78,6 @@ func (f *FeatureCore) Init() error {
 		f.WelcomeEvtHandler,
 		f.OnUserConnectedHandler,
 		f.OnCheckedInHandler,
-		f.SubscriptionCheckHandler,
 	); err != nil {
 		return err
 	}
