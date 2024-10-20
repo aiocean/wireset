@@ -9,6 +9,7 @@ import (
 	models2 "github.com/aiocean/wireset/feature/shopifyapp/models"
 	"github.com/aiocean/wireset/repository"
 	"github.com/aiocean/wireset/shopifysvc"
+	"github.com/pkg/errors"
 )
 
 type OnUserConnectedHandler struct {
@@ -44,6 +45,23 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 
 	activeSubscription, err := shopifyClient.GetActiveSubscriptions()
 	if err != nil {
+		if errors.Is(err, shopifysvc.ErrorSubscriptionNotFound) {
+			// it is not an error, just means there is no active subscription
+			return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
+				RoomID:   evt.RoomID,
+				Username: evt.UserName,
+				Payload: models.WebsocketMessage[models2.SetActivateSubscriptionPayload]{
+					Topic: models2.TopicSetActivateSubscription,
+					Payload: models2.SetActivateSubscriptionPayload{
+						ID:     "-1",
+						Status: "ACTIVE",
+						TrialDays: 0,
+						Name:      "Free",
+					},
+				},
+			})
+		}
+
 		return err
 	}
 
