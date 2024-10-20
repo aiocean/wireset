@@ -7,8 +7,6 @@ import (
 	"github.com/aiocean/wireset/feature/shopifyapp/command"
 	"github.com/aiocean/wireset/feature/shopifyapp/event"
 	"github.com/aiocean/wireset/feature/shopifyapp/middleware"
-	"github.com/aiocean/wireset/feature/shopifyapp/models"
-	"github.com/aiocean/wireset/feature/shopifyapp/ws"
 	"github.com/aiocean/wireset/fiberapp"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/wire"
@@ -27,9 +25,6 @@ var DefaultWireset = wire.NewSet(
 	wire.Struct(new(event.OnCheckedInHandler), "*"),
 	wire.Struct(new(event.SubscriptionCheckHandler), "*"),
 
-	wire.Struct(new(ws.FetchActivateSubscriptionHandler), "*"),
-	wire.Struct(new(ws.CreateSubscriptionHandler), "*"),
-
 	middleware.NewAuthzController,
 
 	wire.Struct(new(api.AuthHandler), "*"),
@@ -42,8 +37,6 @@ type FeatureCore struct {
 	SetShopStateCmdHandler   *command.SetShopStateHandler
 	SendMessageCmdHandler    *command.SendMessageHandler
 
-	FetchPlanWsHandler        *ws.FetchActivateSubscriptionHandler
-	CreateSubscriptionHandler *ws.CreateSubscriptionHandler
 
 	ShopInstalledEvtHandler  *event.CreateUserHandler
 	WelcomeEvtHandler        *event.WelcomeHandler
@@ -124,15 +117,5 @@ func (f *FeatureCore) Init() error {
 		},
 	)
 
-	f.WsRegistry.AddWebsocketHandler(
-		&registry.WebsocketHandler{
-			Topic:   models.TopicFetchActivateSubscription,
-			Handler: f.FetchPlanWsHandler.Handle,
-		},
-		&registry.WebsocketHandler{
-			Topic:   models.TopicCreateSubscription,
-			Handler: f.CreateSubscriptionHandler.Handle,
-		},
-	)
 	return nil
 }

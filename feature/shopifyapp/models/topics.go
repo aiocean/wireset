@@ -2,8 +2,6 @@ package models
 
 import "github.com/aiocean/wireset/feature/realtime/models"
 
-const TopicFetchActivateSubscription models.WebsocketTopic = "fetchActiveSubscription"
-
 const TopicSetActivateSubscription models.WebsocketTopic = "setActiveSubscription"
 
 const SubscriptionStatusActive = "ACTIVE"
