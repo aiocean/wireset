@@ -9,6 +9,7 @@ import (
 	"github.com/aiocean/wireset/feature/shopifyapp/middleware"
 	"github.com/aiocean/wireset/feature/shopifyapp/plan"
 	"github.com/aiocean/wireset/fiberapp"
+	"github.com/aiocean/wireset/poolsvc"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/wire"
 )
@@ -34,6 +35,7 @@ var DefaultWireset = wire.NewSet(
 	wire.Struct(new(api.AuthHandler), "*"),
 	wire.Struct(new(api.WebhookHandler), "*"),
 	wire.Struct(new(api.GdprHandler), "*"),
+	poolsvc.DefaultWireset,
 )
 
 type FeatureCore struct {

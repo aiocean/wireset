@@ -5,8 +5,9 @@ import (
 
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/aiocean/wireset/feature/realtime/command"
-	"github.com/aiocean/wireset/feature/realtime/models"
-	models2 "github.com/aiocean/wireset/feature/shopifyapp/models"
+	realtimemodel "github.com/aiocean/wireset/feature/realtime/models"
+	"github.com/aiocean/wireset/feature/shopifyapp/models"
+	"github.com/aiocean/wireset/feature/shopifyapp/plan"
 	"github.com/aiocean/wireset/repository"
 	"github.com/aiocean/wireset/shopifysvc"
 	"github.com/pkg/errors"
@@ -17,6 +18,7 @@ type OnUserConnectedHandler struct {
 	TokenRepo  *repository.TokenRepository
 	ShopifySvc *shopifysvc.ShopifyService
 	ShopRepo   *repository.ShopRepository
+	PlanRepo   *plan.PlanRepository
 }
 
 func (h *OnUserConnectedHandler) HandlerName() string {
@@ -24,11 +26,14 @@ func (h *OnUserConnectedHandler) HandlerName() string {
 }
 
 func (h *OnUserConnectedHandler) NewEvent() interface{} {
-	return &models.UserJoinedEvt{}
+	return &realtimemodel.UserJoinedEvt{}
 }
 
+const FreePlanName = "Free"
+const FreePlanID = "-1"
+
 func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) error {
-	evt := event.(*models.UserJoinedEvt)
+	evt := event.(*realtimemodel.UserJoinedEvt)
 	shopifyDomain := evt.RoomID
 
 	shop, err := h.ShopRepo.GetByDomain(ctx, shopifyDomain)
@@ -50,32 +55,35 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 			return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
 				RoomID:   evt.RoomID,
 				Username: evt.UserName,
-				Payload: models.WebsocketMessage[models2.SetActivateSubscriptionPayload]{
-					Topic: models2.TopicSetActivateSubscription,
-					Payload: models2.SetActivateSubscriptionPayload{
-						ID:     "-1",
-						Status: models2.SubscriptionStatusActive,
-						TrialDays: 0,
-						Name:      "Free",
+				Payload: realtimemodel.WebsocketMessage[models.SetActivateSubscriptionPayload]{
+					Topic: models.TopicSetActivateSubscription,
+					Payload: models.SetActivateSubscriptionPayload{
+						ID:     FreePlanID,
+						Status: models.SubscriptionStatusActive,
+						Name:      FreePlanName,
 					},
 				},
 			})
 		}
-
 		return err
 	}
 
+	plan, err := h.PlanRepo.GetPlanByName(activeSubscription.Name)
+	if err != nil {
+		return err
+	}
 
 	return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
 		RoomID:   evt.RoomID,
 		Username: evt.UserName,
-		Payload: models.WebsocketMessage[models2.SetActivateSubscriptionPayload]{
-			Topic: models2.TopicSetActivateSubscription,
-			Payload: models2.SetActivateSubscriptionPayload{
+		Payload: realtimemodel.WebsocketMessage[models.SetActivateSubscriptionPayload]{
+			Topic: models.TopicSetActivateSubscription,
+			Payload: models.SetActivateSubscriptionPayload{
 				ID:     activeSubscription.ID,
 				Status: activeSubscription.Status,
 				TrialDays: activeSubscription.TrialDays,
 				Name:      activeSubscription.Name,
+				Plan:      plan,
 			},
 		},
 	})

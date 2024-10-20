@@ -2,23 +2,20 @@ package plan
 
 import (
 	"github.com/aiocean/wireset/feature/shopifyapp/models"
-	"github.com/alitto/pond"
+	"github.com/aiocean/wireset/poolsvc"
 	"go.uber.org/zap"
 )
 
 type Registry struct {
 	PlanRepo *PlanRepository
-	WorkerPool *pond.WorkerPool
+	WorkerPool *poolsvc.PoolSvc
 	Logger     *zap.Logger
 }
 
 // AddPlans registers plans with the registry, if a plan already exists, it will not be registered again.
 func (r *Registry) AddPlans(plans ...*models.Plan) error {
-
-	r.WorkerPool.Submit(func() {
-		for _, plan := range plans {
-			plan := plan // Capture loop variable
-			r.WorkerPool.Submit(func() {
+	for _, plan := range plans {
+			r.WorkerPool.TrySubmitWithRetry(func() {
 				exists, err := r.PlanRepo.IsPlanExists(plan.ID)
 				if err != nil || exists {
 					return
@@ -29,7 +26,6 @@ func (r *Registry) AddPlans(plans ...*models.Plan) error {
 				}
 			})
 		}
-	})
 
 	return nil
 }

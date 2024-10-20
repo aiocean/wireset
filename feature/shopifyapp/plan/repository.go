@@ -42,6 +42,15 @@ func (r *PlanRepository) GetPlanByID(ID string) (*models.Plan, error) {
 	return &plan, nil
 }
 
+// GetPlanByName returns the pricing plan with the given name.
+func (r *PlanRepository) GetPlanByName(name string) (*models.Plan, error) {
+	var plan models.Plan
+	if err := r.PlansCollection.FindOne(context.Background(), bson.M{"name": name}).Decode(&plan); err != nil {
+		return nil, err
+	}
+	return &plan, nil
+}
+
 // IsPlanExists checks if the plan with the given ID exists.
 func (r *PlanRepository) IsPlanExists(ID string) (bool, error) {
 	var plan models.Plan

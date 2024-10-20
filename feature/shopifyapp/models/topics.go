@@ -32,6 +32,7 @@ type SetActivateSubscriptionPayload struct {
 	Name      string                    `json:"name"`
 	TrialDays int                       `json:"trialDays"`
 	Status    string     `json:"status"` // ACTIVE, UNPAID, EXPIRED
+	Plan      *Plan      `json:"plan"`
 }
 
 const TopicNavigateTo models.WebsocketTopic = "navigateTo"
