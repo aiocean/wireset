@@ -30,7 +30,6 @@ func (h *OnUserConnectedHandler) NewEvent() interface{} {
 }
 
 const FreePlanName = "Free"
-const FreePlanID = "-1"
 
 func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) error {
 	evt := event.(*realtimemodel.UserJoinedEvt)
@@ -50,22 +49,27 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 
 	activeSubscription, err := shopifyClient.GetActiveSubscriptions()
 	if err != nil {
-		if errors.Is(err, shopifysvc.ErrorSubscriptionNotFound) {
-			// it is not an error, just means there is no active subscription
-			return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
-				RoomID:   evt.RoomID,
-				Username: evt.UserName,
-				Payload: realtimemodel.WebsocketMessage[models.SetActivateSubscriptionPayload]{
-					Topic: models.TopicSetActivateSubscription,
-					Payload: models.SetActivateSubscriptionPayload{
-						ID:     FreePlanID,
-						Status: models.SubscriptionStatusActive,
-						Name:      FreePlanName,
-					},
-				},
-			})
+		if !errors.Is(err, shopifysvc.ErrorSubscriptionNotFound) {
+			return err
 		}
-		return err
+
+		freePlan, err := h.PlanRepo.GetFreePlan()
+		if err != nil {
+			return err
+		}
+
+		// it is not an error, just means there is no active subscription
+		return h.CommandBus.Send(ctx, &command.SendWsMessageCmd{
+			RoomID:   evt.RoomID,
+			Username: evt.UserName,
+			Payload: realtimemodel.WebsocketMessage[models.SetActivateSubscriptionPayload]{
+				Topic: models.TopicSetActivateSubscription,
+				Payload: models.SetActivateSubscriptionPayload{
+					Status: models.SubscriptionStatusActive,
+					Plan:      freePlan,
+				},
+			},
+		})
 	}
 
 	plan, err := h.PlanRepo.GetPlanByName(activeSubscription.Name)
@@ -79,10 +83,8 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 		Payload: realtimemodel.WebsocketMessage[models.SetActivateSubscriptionPayload]{
 			Topic: models.TopicSetActivateSubscription,
 			Payload: models.SetActivateSubscriptionPayload{
-				ID:     activeSubscription.ID,
 				Status: activeSubscription.Status,
 				TrialDays: activeSubscription.TrialDays,
-				Name:      activeSubscription.Name,
 				Plan:      plan,
 			},
 		},

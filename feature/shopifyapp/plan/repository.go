@@ -42,6 +42,11 @@ func (r *PlanRepository) GetPlanByID(ID string) (*models.Plan, error) {
 	return &plan, nil
 }
 
+// GetFreePlan returns the free plan which have price 0.
+func (r *PlanRepository) GetFreePlan() (*models.Plan, error) {
+	return r.GetPlanByName("Free")
+}
+
 // GetPlanByName returns the pricing plan with the given name.
 func (r *PlanRepository) GetPlanByName(name string) (*models.Plan, error) {
 	var plan models.Plan

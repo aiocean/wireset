@@ -28,9 +28,7 @@ PENDING: The app subscription is pending approval by the merchant.
 ACCEPTED: The app subscription has been approved by the merchant and is ready to be activated by the app. As of API version 2021-01, when a merchant approves an app subscription, the status immediately transitions from pending to active.
 */
 type SetActivateSubscriptionPayload struct {
-	ID        string `json:"id"`
-	Name      string                    `json:"name"`
-	TrialDays int                       `json:"trialDays"`
+	TrialDays int        `json:"trialDays"`
 	Status    string     `json:"status"` // ACTIVE, UNPAID, EXPIRED
 	Plan      *Plan      `json:"plan"`
 }
