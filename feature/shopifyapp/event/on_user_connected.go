@@ -54,7 +54,7 @@ func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) 
 					Topic: models2.TopicSetActivateSubscription,
 					Payload: models2.SetActivateSubscriptionPayload{
 						ID:     "-1",
-						Status: "ACTIVE",
+						Status: models2.SubscriptionStatusActive,
 						TrialDays: 0,
 						Name:      "Free",
 					},
