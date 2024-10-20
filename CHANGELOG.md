@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.9.0](https://github.com/aiocean/wireset/compare/v1.8.0...v1.9.0) (2024-10-20)
+
+
+### Features
+
+* implement plan ([970bd9c](https://github.com/aiocean/wireset/commit/970bd9c5f8655e790f7a389affd0c7c55deb193a))
+* implement plan ([36ad711](https://github.com/aiocean/wireset/commit/36ad7112f1eeb5c27c5e637b1ed781ab08e3f3f8))
+
+
+### Bug Fixes
+
+* update free plan ([351aaa4](https://github.com/aiocean/wireset/commit/351aaa40194b10fd32acfaf57dbaaefe9434bd42))
+
 ## [1.8.0](https://github.com/aiocean/wireset/compare/v1.7.0...v1.8.0) (2024-10-20)
 
 
