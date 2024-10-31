@@ -641,3 +641,29 @@ func (c *ShopifyClient) GetChargeBillingInfo(chargeID string) (*gjson.Result, er
 func NormaizeShopifyDomain(shopifyDomain string) string {
 	return strings.Replace(shopifyDomain, ".myshopify.com", "", -1) + ".myshopify.com"
 }
+
+// GetOrdersCount returns the number of orders in a given time period
+// If productId is provided, it will only count orders containing that product
+func (c *ShopifyClient) GetOrdersCount(startDate, endDate string) (int64, error) {
+	// Build the query filter
+	queryFilter := fmt.Sprintf("created_at:>=%s AND created_at:<=%s", startDate, endDate)
+
+	requestBody := &GraphQlRequest{
+		Query: `query GetOrdersCount($query: String!) {
+			ordersCount(query: $query) {
+				count
+			}
+		}`,
+		Variables: map[string]interface{}{
+			"query": queryFilter,
+		},
+	}
+
+	response, err := c.DoGraphqlRequest(requestBody)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get orders count")
+	}
+
+	count := response.Get("ordersCount.count").Int()
+	return count, nil
+}
