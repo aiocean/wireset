@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.0](https://github.com/aiocean/wireset/compare/v1.9.0...v1.10.0) (2024-10-31)
+
+
+### Features
+
+* add GetOrdersCount function ([3fae93f](https://github.com/aiocean/wireset/commit/3fae93f03ce722b3e8e901116f9a34ac2eafd451))
+* add static routes registry ([443d857](https://github.com/aiocean/wireset/commit/443d85782b314a5b395929ec6bac4be44c0d6348))
+
 ## [1.9.0](https://github.com/aiocean/wireset/compare/v1.8.0...v1.9.0) (2024-10-20)
 
 
