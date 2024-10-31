@@ -70,7 +70,8 @@ func (s *ApiServer) runMessageRouter(ctx context.Context) error {
 func (s *ApiServer) runHTTPServer() error {
 	port := s.ConfigSvc.Port
 	s.LogSvc.Info("Starting HTTP server", zap.String("port", port))
-
+	
+	s.HttpHandlerRegistry.RegisterStaticRoutes(s.FiberSvc)
 	s.HttpHandlerRegistry.RegisterMiddlewares(s.FiberSvc)
 	s.HttpHandlerRegistry.RegisterHandlers(s.FiberSvc)
 

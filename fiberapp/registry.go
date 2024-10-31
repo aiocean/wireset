@@ -15,12 +15,14 @@ type HttpHandler struct {
 type Registry struct {
 	HttpHandlers    map[string]*HttpHandler
 	HttpMiddlewares map[string]interface{}
+	StaticRoutes    map[string]string // New field for static routes
 }
 
 func NewRegistry() *Registry {
 	return &Registry{
 		HttpHandlers:    map[string]*HttpHandler{},
 		HttpMiddlewares: map[string]interface{}{},
+		StaticRoutes:    map[string]string{}, 
 	}
 }
 
@@ -49,8 +51,20 @@ func (r *Registry) RegisterHandlers(app *fiber.App) {
 	}
 }
 
+// New function to register static routes
+func (r *Registry) RegisterStaticRoutes(app *fiber.App) {
+	for urlPrefix, directory := range r.StaticRoutes {
+		app.Static(urlPrefix, directory)
+	}
+}
+
 func (r *Registry) RegisterMiddlewares(app *fiber.App) {
 	for path, middleware := range r.HttpMiddlewares {
 		app.Use(path, middleware)
 	}
+}
+
+// New method to add static routes
+func (r *Registry) AddStaticRoute(urlPrefix, directory string) {
+	r.StaticRoutes[urlPrefix] = directory
 }

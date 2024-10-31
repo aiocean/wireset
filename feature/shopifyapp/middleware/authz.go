@@ -202,7 +202,11 @@ func GetAccessToken(c *fiber.Ctx) (string, bool) {
 
 func GetShopID(c *fiber.Ctx) (string, bool) {
 	shopID, ok := c.Locals(LocalKeyShopID).(string)
-	return shopID, ok
+	normalizedShopID, err := repository.NormalizeShopID(shopID)
+	if err != nil {
+		return "", false
+	}
+	return normalizedShopID, ok
 }
 
 func GetSid(c *fiber.Ctx) (string, bool) {
