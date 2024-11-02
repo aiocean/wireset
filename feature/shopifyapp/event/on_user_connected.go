@@ -29,8 +29,6 @@ func (h *OnUserConnectedHandler) NewEvent() interface{} {
 	return &realtimemodel.UserJoinedEvt{}
 }
 
-const FreePlanName = "Free"
-
 func (h *OnUserConnectedHandler) Handle(ctx context.Context, event interface{}) error {
 	evt := event.(*realtimemodel.UserJoinedEvt)
 	shopifyDomain := evt.RoomID

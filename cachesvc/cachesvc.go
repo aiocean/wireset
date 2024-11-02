@@ -22,7 +22,7 @@ func ProvideCacheConfig() *CacheConfig {
 		NumCounters: 1e7,
 		MaxCost:     1 << 30,
 		BufferItems: 64,
-		DefaultTTL:  24 * time.Hour, // Example default TTL
+		DefaultTTL:  3 * time.Hour, // Example default TTL
 	}
 }
 
