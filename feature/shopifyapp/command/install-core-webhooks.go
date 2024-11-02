@@ -36,14 +36,6 @@ func (h *InstallWebhookHandler) RegisterBus(commandBus *cqrs.CommandBus, eventBu
 }
 
 func (h *InstallWebhookHandler) Handle(ctx context.Context, cmdItf interface{}) error {
-	cmd := cmdItf.(*model.InstallWebhookCmd)
-
-	shopClient := h.ShopifySvc.GetShopifyClient(cmd.MyshopifyDomain, cmd.AccessToken)
-
-	if err := shopClient.InstallAppUninstalledWebhook(); err != nil {
-		return err
-	}
-
-
+	// TODO: migrated to shopify managed webhooks
 	return nil
 }
