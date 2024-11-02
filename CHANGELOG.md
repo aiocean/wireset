@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/aiocean/wireset/compare/v1.11.0...v1.12.0) (2024-11-02)
+
+
+### Features
+
+* update subscription event ([2168c94](https://github.com/aiocean/wireset/commit/2168c9410266a2b270ff3839d7be6ff019663735))
+
 ## [1.11.0](https://github.com/aiocean/wireset/compare/v1.10.1...v1.11.0) (2024-11-02)
 
 
