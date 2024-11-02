@@ -100,9 +100,9 @@ func (f *FeatureCore) Init() error {
 			},
 		},
 		&fiberapp.HttpHandler{
-			Method:   fiber.MethodGet,
-			Path:     "/webhooks/shopify/app-uninstalled",
-			Handlers: []fiber.Handler{f.WebhookHandler.Uninstalled},
+			Method:   fiber.MethodPost,
+			Path:     "/webhooks",
+			Handlers: []fiber.Handler{f.WebhookHandler.OnWebhookOccurred},
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodPost,

@@ -137,11 +137,25 @@ func (r *PlanRepository) GetPlansOfShop(shopID string) ([]*models.Plan, error) {
 	if err := r.PlansCollection.FindOne(context.Background(), bson.M{"id": shopID}).Decode(&plan); err != nil {
 		return nil, err
 	}
+
 	plans = append(plans, &plan)
 	if len(plans) == 0 {
 		return nil, ErrNoPlanFound
 	}
 	return plans, nil
+}
+
+// GetActivePlanOfShop returns the active pricing plan for the given shop ID.
+func (r *PlanRepository) GetActivePlanOfShop(shopID string) (*models.Plan, error) {
+	var plan models.Plan
+	if err := r.PlansCollection.FindOne(context.Background(), bson.M{"id": shopID, "status": "active"}).Decode(&plan); err != nil {
+		return nil, err
+	}
+
+	if plan.ID == "" {
+		return nil, ErrNoPlanFound
+	}
+	return &plan, nil
 }
 
 // CanShopFeature checks if the given shop ID has the given feature ID.

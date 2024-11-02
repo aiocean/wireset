@@ -17,7 +17,7 @@ type WebhookHandler struct {
 	FiberApp *fiber.App
 }
 
-func (s *WebhookHandler) Uninstalled(c *fiber.Ctx) error {
+func (s *WebhookHandler) OnWebhookOccurred(c *fiber.Ctx) error {
 	shop := c.Query("shop")
 
 	// Fetch additional data from the request or database
@@ -25,6 +25,8 @@ func (s *WebhookHandler) Uninstalled(c *fiber.Ctx) error {
 	if err != nil {
 		return fiber.NewError(http.StatusInternalServerError, "Failed to fetch shop ID")
 	}
+
+	
 
 	uninstalledEvt := &model.ShopUninstalledEvt{
 		MyshopifyDomain: shop,
