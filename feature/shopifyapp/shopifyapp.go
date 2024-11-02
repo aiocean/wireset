@@ -101,22 +101,22 @@ func (f *FeatureCore) Init() error {
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodGet,
-			Path:     "/webhook/shopify/app-uninstalled",
+			Path:     "/webhooks/shopify/app-uninstalled",
 			Handlers: []fiber.Handler{f.WebhookHandler.Uninstalled},
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodPost,
-			Path:     "/gdpr/customers/data_request",
+			Path:     "/webhooks/gdpr/customers/data_request",
 			Handlers: []fiber.Handler{f.GdprHandler.CustomerDataRequest},
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodPost,
-			Path:     "/gdpr/customers/redact",
+			Path:     "/webhooks/gdpr/customers/redact",
 			Handlers: []fiber.Handler{f.GdprHandler.CustomerRedact},
 		},
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodPost,
-			Path:     "/gdpr/shop/redact",
+			Path:     "/webhooks/gdpr/shop/redact",
 			Handlers: []fiber.Handler{f.GdprHandler.ShopRedact},
 		},
 	)

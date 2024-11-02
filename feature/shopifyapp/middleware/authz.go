@@ -75,6 +75,10 @@ func (s *ShopifyAuthzMiddleware) IsAuthRequired(path string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(path, "/webhooks") {
+		return false
+	}
+
 	return true
 }
 
@@ -202,11 +206,7 @@ func GetAccessToken(c *fiber.Ctx) (string, bool) {
 
 func GetShopID(c *fiber.Ctx) (string, bool) {
 	shopID, ok := c.Locals(LocalKeyShopID).(string)
-	normalizedShopID, err := repository.NormalizeShopID(shopID)
-	if err != nil {
-		return "", false
-	}
-	return normalizedShopID, ok
+	return shopID, ok
 }
 
 func GetSid(c *fiber.Ctx) (string, bool) {
