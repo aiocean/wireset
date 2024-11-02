@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/aiocean/wireset/compare/v1.10.0...v1.10.1) (2024-11-02)
+
+
+### Bug Fixes
+
+* remove unused fields ([f44458d](https://github.com/aiocean/wireset/commit/f44458dc30b89c8a54420e50ec3ebdb622d03e62))
+
 ## [1.10.0](https://github.com/aiocean/wireset/compare/v1.9.0...v1.10.0) (2024-10-31)
 
 
