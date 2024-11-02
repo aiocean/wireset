@@ -1,6 +1,10 @@
 package model
 
-import "github.com/aiocean/wireset/feature/shopifyapp/models"
+import (
+	"time"
+
+	"github.com/aiocean/wireset/feature/shopifyapp/models"
+)
 
 type ShopLoggedInEvt struct {
 	ShopID          string
@@ -36,4 +40,11 @@ type AppSubscriptionUpdatedEvt struct {
 	MyshopifyDomain string
 	AccessToken     string
 	Subscription    Subscription
+}
+
+type ShopUninstalledEvt struct {
+	MyshopifyDomain string
+	ShopID          string
+	UninstalledAt   time.Time
+	Reason          string
 }
