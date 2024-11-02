@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.0](https://github.com/aiocean/wireset/compare/v1.10.1...v1.11.0) (2024-11-02)
+
+
+### Features
+
+* add order created ([94929ae](https://github.com/aiocean/wireset/commit/94929aea8fe323bf3a3cbdf3a54e90cf9cbd8916))
+* refactor webhook ([021e350](https://github.com/aiocean/wireset/commit/021e3505d654e832e62093dd5838e3fbe4e3ec63))
+
 ## [1.10.1](https://github.com/aiocean/wireset/compare/v1.10.0...v1.10.1) (2024-11-02)
 
 
