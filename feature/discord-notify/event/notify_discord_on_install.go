@@ -2,12 +2,13 @@ package event
 
 import (
 	"context"
+	"net/http"
+	"strings"
+
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/aiocean/wireset/feature/discord-notify/config"
 	"github.com/aiocean/wireset/model"
 	"go.uber.org/zap"
-	"net/http"
-	"strings"
 )
 
 type NotifyDiscordOnInstallHandler struct {

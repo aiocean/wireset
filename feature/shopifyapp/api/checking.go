@@ -98,12 +98,12 @@ func (s *AuthHandler) handleNoAuth(ctx *fiber.Ctx) error {
 
 	isExists, err := s.ShopRepo.IsDomainExists(ctx.UserContext(), shopDomain)
 	if err != nil {
-	
+
 		s.LogSvc.Error("error while checking shop domain", zap.Error(err))
 		// this is critical error, we need to return 500 to the client, and have no destination to redirect
 		// so we need to return the app listing url, so that the user can install the app
 		return ctx.Status(http.StatusInternalServerError).JSON(model.AuthResponse{
-			Message: "Internal server error",
+			Message:           "Internal server error",
 			AuthenticationUrl: s.ShopifyConfig.AppListingUrl,
 		})
 	}

@@ -538,7 +538,7 @@ var ErrorSubscriptionNotFound = errors.New("subscription not found")
 func (c *ShopifyClient) GetActiveSubscriptions() (*Subscription, error) {
 	requestBody := &GraphQlRequest{
 		Query: `{
-		  currentAppInstallation {
+		currentAppInstallation {
 			activeSubscriptions{
 				id
 				name
@@ -546,8 +546,8 @@ func (c *ShopifyClient) GetActiveSubscriptions() (*Subscription, error) {
 				status
 				test
 				currentPeriodEnd
+				}
 			}
-		  }
 		}`,
 	}
 

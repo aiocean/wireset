@@ -59,22 +59,27 @@ func NewAuthzController(
 // IsAuthRequired check if the path is required authentication
 // TODO by hard code this path, it's become not flexible, hard to maintain. Maybe let's feature to register it into the http api registry is better
 func (s *ShopifyAuthzMiddleware) IsAuthRequired(path string) bool {
+	// auth path, no need to authz
 	if strings.HasPrefix(path, "/auth") {
 		return false
 	}
 
+	// metrics path, no need to authz
 	if strings.HasPrefix(path, "/metrics") {
 		return false
 	}
 
+	// static path, no need to authz
 	if strings.HasPrefix(path, "/app") {
 		return false
 	}
 
+	// charge confirmation path, no need to authz
 	if strings.HasPrefix(path, "/charge/confirmation") {
 		return false
 	}
 
+	// already handled by the webhook handler
 	if strings.HasPrefix(path, "/webhooks") {
 		return false
 	}

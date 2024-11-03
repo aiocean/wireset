@@ -12,3 +12,4 @@ func NewShopifyApp(shopifyConfig *Config, config *configsvc.ConfigService) *gosh
 		RedirectUrl: config.ServiceUrl + "/auth/shopify/login-callback",
 	}
 }
+

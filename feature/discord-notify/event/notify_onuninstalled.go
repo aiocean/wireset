@@ -11,7 +11,7 @@ import (
 
 	"github.com/ThreeDotsLabs/watermill/components/cqrs"
 	"github.com/aiocean/wireset/feature/discord-notify/config"
-	"github.com/aiocean/wireset/model"
+	"github.com/aiocean/wireset/feature/shopifyapp/event/model"
 	"go.uber.org/zap"
 )
 

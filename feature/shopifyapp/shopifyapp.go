@@ -17,7 +17,6 @@ import (
 var DefaultWireset = wire.NewSet(
 	wire.Struct(new(FeatureCore), "*"),
 
-	command.NewInstallWebhookHandler,
 	command.NewSetShopStateHandler,
 
 	wire.Struct(new(plan.Registry), "*"),
@@ -39,26 +38,31 @@ var DefaultWireset = wire.NewSet(
 )
 
 type FeatureCore struct {
-	InstallWebhookCmdHandler *command.InstallWebhookHandler
-	SetShopStateCmdHandler   *command.SetShopStateHandler
-	SendMessageCmdHandler    *command.SendMessageHandler
+	// Command Handlers
+	SetShopStateCmdHandler *command.SetShopStateHandler
+	SendMessageCmdHandler  *command.SendMessageHandler
 
+	// Event Handlers
+	ShopInstalledEvtHandler *event.CreateUserHandler
+	WelcomeEvtHandler       *event.WelcomeHandler
+	OnUserConnectedHandler  *event.OnUserConnectedHandler
+	OnCheckedInHandler      *event.OnCheckedInHandler
 
-	ShopInstalledEvtHandler  *event.CreateUserHandler
-	WelcomeEvtHandler        *event.WelcomeHandler
-	OnUserConnectedHandler   *event.OnUserConnectedHandler
-	OnCheckedInHandler       *event.OnCheckedInHandler
-
+	// Middleware
 	AuthzMiddleware *middleware.ShopifyAuthzMiddleware
 
+	// API Handlers
 	AuthHandler    *api.AuthHandler
-	WebhookHandler       *api.WebhookHandler
-	GdprHandler          *api.GdprHandler
+	WebhookHandler *api.WebhookHandler
+	GdprHandler    *api.GdprHandler
 
+	// Processors
 	EventProcessor   *cqrs.EventProcessor
 	CommandProcessor *cqrs.CommandProcessor
-	HttpRegistry     *fiberapp.Registry
-	WsRegistry       *registry.HandlerRegistry
+
+	// Registries
+	HttpRegistry *fiberapp.Registry
+	WsRegistry   *registry.HandlerRegistry
 }
 
 func (f *FeatureCore) Name() string {
@@ -67,14 +71,15 @@ func (f *FeatureCore) Name() string {
 
 func (f *FeatureCore) Init() error {
 
+	// Register command handlers
 	if err := f.CommandProcessor.AddHandlers(
-		f.InstallWebhookCmdHandler,
 		f.SetShopStateCmdHandler,
 		f.SendMessageCmdHandler,
 	); err != nil {
 		return err
 	}
 
+	// Register event handlers
 	if err := f.EventProcessor.AddHandlers(
 		f.ShopInstalledEvtHandler,
 		f.WelcomeEvtHandler,
@@ -93,8 +98,8 @@ func (f *FeatureCore) Init() error {
 			Handlers: []fiber.Handler{f.AuthHandler.LoginCallback},
 		},
 		&fiberapp.HttpHandler{
-			Method:   fiber.MethodGet,
-			Path:     "/auth/shopify/checkin",
+			Method: fiber.MethodGet,
+			Path:   "/auth/shopify/checkin",
 			Handlers: []fiber.Handler{
 				f.AuthHandler.Checkin,
 			},
@@ -103,21 +108,6 @@ func (f *FeatureCore) Init() error {
 			Method:   fiber.MethodPost,
 			Path:     "/webhooks",
 			Handlers: []fiber.Handler{f.WebhookHandler.OnWebhookOccurred},
-		},
-		&fiberapp.HttpHandler{
-			Method:   fiber.MethodPost,
-			Path:     "/webhooks/gdpr/customers/data_request",
-			Handlers: []fiber.Handler{f.GdprHandler.CustomerDataRequest},
-		},
-		&fiberapp.HttpHandler{
-			Method:   fiber.MethodPost,
-			Path:     "/webhooks/gdpr/customers/redact",
-			Handlers: []fiber.Handler{f.GdprHandler.CustomerRedact},
-		},
-		&fiberapp.HttpHandler{
-			Method:   fiber.MethodPost,
-			Path:     "/webhooks/gdpr/shop/redact",
-			Handlers: []fiber.Handler{f.GdprHandler.ShopRedact},
 		},
 	)
 
