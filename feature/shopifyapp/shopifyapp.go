@@ -33,7 +33,6 @@ var DefaultWireset = wire.NewSet(
 
 	wire.Struct(new(api.AuthHandler), "*"),
 	wire.Struct(new(api.WebhookHandler), "*"),
-	wire.Struct(new(api.GdprHandler), "*"),
 	poolsvc.DefaultWireset,
 )
 
@@ -54,7 +53,6 @@ type FeatureCore struct {
 	// API Handlers
 	AuthHandler    *api.AuthHandler
 	WebhookHandler *api.WebhookHandler
-	GdprHandler    *api.GdprHandler
 
 	// Processors
 	EventProcessor   *cqrs.EventProcessor

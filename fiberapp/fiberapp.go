@@ -3,6 +3,10 @@ package fiberapp
 import (
 	"encoding/json"
 	"errors"
+	"net/url"
+	"os"
+	"time"
+
 	"github.com/aiocean/wireset/configsvc"
 	"github.com/gofiber/contrib/fiberzap/v2"
 	"github.com/gofiber/fiber/v2"
@@ -14,10 +18,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/proxy"
 	"github.com/gofiber/fiber/v2/middleware/requestid"
 	"github.com/google/wire"
+	"github.com/valyala/fasthttp"
 	"go.uber.org/zap"
-	"net/url"
-	"os"
-	"time"
 )
 
 var DefaultWireset = wire.NewSet(
@@ -108,8 +110,15 @@ func NewFiberApp(
 			if c.Path() == "/healthz" {
 				return c.Next()
 			}
+			
+			// Combine base URL with path and query parameters
 			endpointUrl, _ := url.JoinPath(config.ProxyURL, c.Path())
-			return proxy.Forward(endpointUrl)(c)
+			if c.Request().URI().QueryString() != nil {
+				endpointUrl += "?" + string(c.Request().URI().QueryString())
+			}
+
+			// Forward request with headers
+			return proxy.Forward(endpointUrl, &fasthttp.Client{})(c)
 		})
 	}
 

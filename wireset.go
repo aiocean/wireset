@@ -44,6 +44,10 @@ var NormalApp = wire.NewSet(
 // MinimalApp provides minimal dependencies for a basic app
 var MinimalApp = Common
 
+var ApiApp = wire.NewSet(
+	Common,
+)
+
 // CliApp provides dependencies for a CLI app
 var CliApp = wire.NewSet(
 	logsvc.DefaultWireset,
