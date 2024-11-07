@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.13.0](https://github.com/aiocean/wireset/compare/v1.12.0...v1.13.0) (2024-11-03)
+
+
+### Features
+
+* implement webhook ([98e0efe](https://github.com/aiocean/wireset/commit/98e0efe8b7d3da1800bb1ea3ca5788728c10405b))
+
+
+### Bug Fixes
+
+* Removes create subscription feature ([c199bf7](https://github.com/aiocean/wireset/commit/c199bf71247758531d596f6f5e377899dfb10b7f))
+
 ## [1.12.0](https://github.com/aiocean/wireset/compare/v1.11.0...v1.12.0) (2024-11-02)
 
 
