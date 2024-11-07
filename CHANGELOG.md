@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/aiocean/wireset/compare/v1.13.0...v1.14.0) (2024-11-07)
+
+
+### Features
+
+* add query to forward ([ec33df3](https://github.com/aiocean/wireset/commit/ec33df320238400b3094606b3b53a916d4c88700))
+
 ## [1.13.0](https://github.com/aiocean/wireset/compare/v1.12.0...v1.13.0) (2024-11-03)
 
 
