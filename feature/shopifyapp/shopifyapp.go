@@ -90,6 +90,7 @@ func (f *FeatureCore) Init() error {
 	f.HttpRegistry.AddHttpMiddleware("/", f.AuthzMiddleware.Handle)
 
 	f.HttpRegistry.AddHttpHandlers(
+		// in the future, we do not have login callback
 		&fiberapp.HttpHandler{
 			Method:   fiber.MethodGet,
 			Path:     "/auth/shopify/login-callback",
