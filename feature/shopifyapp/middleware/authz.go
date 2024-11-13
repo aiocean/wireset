@@ -74,11 +74,6 @@ func (s *ShopifyAuthzMiddleware) IsAuthRequired(path string) bool {
 		return false
 	}
 
-	// charge confirmation path, no need to authz
-	if strings.HasPrefix(path, "/charge/confirmation") {
-		return false
-	}
-
 	// already handled by the webhook handler
 	if strings.HasPrefix(path, "/webhooks") {
 		return false
