@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/aiocean/wireset/compare/v1.15.0...v1.15.1) (2024-11-16)
+
+
+### Bug Fixes
+
+* fix get current theme ([128c643](https://github.com/aiocean/wireset/commit/128c643ec573991ba1d434f97677219759dcefff))
+
 ## [1.15.0](https://github.com/aiocean/wireset/compare/v1.14.0...v1.15.0) (2024-11-13)
 
 
