@@ -344,15 +344,20 @@ func (c *ShopifyClient) IsAppUninstalledWebhookInstalled() (bool, error) {
 // GetCurrentTheme returns the current theme
 func (c *ShopifyClient) GetCurrentTheme() (string, error) {
 	requestBody := &GraphQlRequest{
-		Query: `{
-		theme {
-		  id
-		  name
-		  role
-		}
-	  }`,
+		Query: `query($roles: [ThemeRole!]) {
+			themes(first: 1, roles: $roles) {
+				nodes {
+					id
+					name
+					role
+				}
+			}
+		}`,
+		Variables: map[string]interface{}{
+			"roles": []string{"MAIN"},
+		},
 	}
-
+	
 	response, err := c.DoGraphqlRequest(requestBody)
 	if err != nil {
 		return "", errors.WithMessage(err, "failed to get current theme")
