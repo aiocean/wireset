@@ -363,8 +363,11 @@ func (c *ShopifyClient) GetCurrentTheme() (string, error) {
 		return "", errors.WithMessage(err, "failed to get current theme")
 	}
 
-	themeData := response.Get("theme")
-	return themeData.Get("id").String(), nil
+	themeData := response.Get("themes.nodes").Array()
+	if len(themeData) == 0 {
+		return "", errors.New("no theme found")
+	}
+	return themeData[0].Get("id").String(), nil
 }
 
 func (c *ShopifyClient) GetCurrentApplicationInstallationID() (string, error) {
