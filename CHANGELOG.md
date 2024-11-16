@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.15.0](https://github.com/aiocean/wireset/compare/v1.14.0...v1.15.0) (2024-11-13)
+
+
+### Features
+
+* update git ([9c759bc](https://github.com/aiocean/wireset/commit/9c759bcbf7d8e29b0b24d91367a425d03927c244))
+
+
+### Bug Fixes
+
+* **auth:** remove auth bypass for charge confirmation endpoint ([b5ae30a](https://github.com/aiocean/wireset/commit/b5ae30a396cce41ec0e8d3dfa2ba0a8e5924c38e))
+* **auth:** remove auth bypass for charge confirmation endpoint ([39d4b1a](https://github.com/aiocean/wireset/commit/39d4b1a86d77d9d641e11fad575e0c7919a961d4))
+
 ## [1.14.0](https://github.com/aiocean/wireset/compare/v1.13.0...v1.14.0) (2024-11-07)
 
 
