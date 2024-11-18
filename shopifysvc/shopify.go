@@ -650,6 +650,10 @@ func NormaizeShopifyDomain(shopifyDomain string) string {
 	return strings.Replace(shopifyDomain, ".myshopify.com", "", -1) + ".myshopify.com"
 }
 
+func NormalizeShopifyName(shopifyName string) string {
+	return strings.TrimSuffix(shopifyName, ".myshopify.com")
+}
+
 // GetOrdersCount returns the number of orders in a given time period
 // If productId is provided, it will only count orders containing that product
 func (c *ShopifyClient) GetOrdersCount(startDate, endDate string) (int64, error) {

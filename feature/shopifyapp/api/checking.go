@@ -93,12 +93,9 @@ func (s *AuthHandler) handleNoAuth(ctx *fiber.Ctx) error {
 		})
 	}
 
-	shopName := strings.TrimSuffix(shopQuery, ".myshopify.com")
-	shopDomain := shopName + ".myshopify.com"
-
+	shopDomain := shopifysvc.NormaizeShopifyDomain(shopQuery)
 	isExists, err := s.ShopRepo.IsDomainExists(ctx.UserContext(), shopDomain)
 	if err != nil {
-
 		s.LogSvc.Error("error while checking shop domain", zap.Error(err))
 		// this is critical error, we need to return 500 to the client, and have no destination to redirect
 		// so we need to return the app listing url, so that the user can install the app
@@ -107,6 +104,8 @@ func (s *AuthHandler) handleNoAuth(ctx *fiber.Ctx) error {
 			AuthenticationUrl: s.ShopifyConfig.AppListingUrl,
 		})
 	}
+
+	shopName := shopifysvc.NormalizeShopifyName(shopQuery)
 
 	if isExists {
 		s.LogSvc.Info("Shop exists in the database")
@@ -160,20 +159,18 @@ func (s *AuthHandler) handleAuth(ctx *fiber.Ctx, authentication string) error {
 		return ctx.Status(http.StatusOK).JSON(authResponse)
 	}
 
-	/*
-		{
-			"iss": "<shop-name.myshopify.com/admin>",
-			"dest": "<shop-name.myshopify.com>",
-			"aud": "<client ID>",
-			"sub": "<user ID>",
-			"exp": "<time in seconds>",
-			"nbf": "<time in seconds>",
-			"iat": "<time in seconds>",
-			"jti": "<random UUID>",
-			"sid": "<session ID>"
-			"sig": "<signature>"
-		}
-	*/
+	/*{
+		"iss": "<shop-name.myshopify.com/admin>",
+		"dest": "<shop-name.myshopify.com>",
+		"aud": "<client ID>",
+		"sub": "<user ID>",
+		"exp": "<time in seconds>",
+		"nbf": "<time in seconds>",
+		"iat": "<time in seconds>",
+		"jti": "<random UUID>",
+		"sid": "<session ID>"
+		"sig": "<signature>"
+	}*/
 	var sessionClaim model.CustomJwtClaims
 	sessionToken, err := jwt.ParseWithClaims(authentication, &sessionClaim, s.sessionTokenKeyFunc)
 	if err != nil {
