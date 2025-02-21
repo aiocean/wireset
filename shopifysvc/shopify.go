@@ -68,8 +68,7 @@ func (s *ShopifyService) GetShopifyClient(shop, accessToken string) *ShopifyClie
 	shop = strings.Replace(shop, ".myshopify.com", "", -1)
 	cacheKey := fmt.Sprintf("shopify_client_%s_%s", shop, accessToken)
 	if client, ok := s.CacheSvc.Get(cacheKey); ok {
-		c := client.(ShopifyClient)
-		return &c
+		return client.(*ShopifyClient)
 	}
 
 	client := ShopifyClient{

@@ -1,12 +1,15 @@
 package middleware
 
 import (
+	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/aiocean/wireset/cachesvc"
 	"github.com/aiocean/wireset/configsvc"
+	"github.com/aiocean/wireset/feature/shopifyapp/models"
 	"github.com/aiocean/wireset/model"
 	"github.com/aiocean/wireset/repository"
 	"github.com/aiocean/wireset/shopifysvc"
@@ -21,7 +24,37 @@ const (
 	LocalKeyAccessToken     = "accessToken"
 	LocalKeyShopID          = "shopID"
 	LocalKeySid             = "sid"
+
+	// Cache configuration
+	defaultCacheTTL = 3 * time.Minute
+	cacheKeyPrefix  = "sessionId"
 )
+
+var (
+	// ErrMissingToken represents a missing authentication token error
+	ErrMissingToken = errors.New("missing authentication token")
+	// ErrInvalidToken represents an invalid authentication token error
+	ErrInvalidToken = errors.New("invalid authentication token")
+)
+
+// Config represents the middleware configuration
+type Config struct {
+	PublicPaths []string
+	CacheTTL    time.Duration
+}
+
+// DefaultConfig returns the default configuration
+func DefaultConfig() Config {
+	return Config{
+		PublicPaths: []string{
+			"/auth",
+			"/metrics",
+			"/app",
+			"/webhooks",
+		},
+		CacheTTL: defaultCacheTTL,
+	}
+}
 
 type ShopifyAuthzMiddleware struct {
 	configService   *configsvc.ConfigService
@@ -31,6 +64,7 @@ type ShopifyAuthzMiddleware struct {
 	cacheSvc        *cachesvc.CacheService
 	logger          *zap.Logger
 	shopifySvc      *shopifysvc.ShopifyService
+	config          Config
 }
 
 func NewAuthzController(
@@ -51,103 +85,108 @@ func NewAuthzController(
 		shopRepository:  shopRepository,
 		shopifySvc:      shopifySvc,
 		cacheSvc:        cacheSvc,
+		config:          DefaultConfig(),
 	}
 
 	return controller
 }
 
-// IsAuthRequired check if the path is required authentication
-// TODO by hard code this path, it's become not flexible, hard to maintain. Maybe let's feature to register it into the http api registry is better
+// IsAuthRequired check if the path requires authentication
 func (s *ShopifyAuthzMiddleware) IsAuthRequired(path string) bool {
-	// auth path, no need to authz
-	if strings.HasPrefix(path, "/auth") {
-		return false
+	for _, publicPath := range s.config.PublicPaths {
+		if strings.HasPrefix(path, publicPath) {
+			return false
+		}
 	}
-
-	// metrics path, no need to authz
-	if strings.HasPrefix(path, "/metrics") {
-		return false
-	}
-
-	// static path, no need to authz
-	if strings.HasPrefix(path, "/app") {
-		return false
-	}
-
-	// already handled by the webhook handler
-	if strings.HasPrefix(path, "/webhooks") {
-		return false
-	}
-
 	return true
 }
 
-type AuthData struct {
-	AccessToken     string
-	MyshopifyDomain string
-	ShopID          string
-	Iss             string
-	Dest            string
-	Aud             string
-	Sub             string
-	Exp             int
-	Nbf             int
-	Iat             int
-	Jti             string
-	Sid             string
-}
-
-// Handle TODO the token which sent from shopify have expired time, we can use this time to cache the authz result, so that we do not need to query database every time
+// Handle processes the authentication middleware
 func (s *ShopifyAuthzMiddleware) Handle(c *fiber.Ctx) error {
 	if !s.IsAuthRequired(c.OriginalURL()) {
 		return c.Next()
 	}
 
-	authHeader := c.Get("authorization")
-	if authHeader == "" {
-		authHeader = c.Params("authorization")
-	}
-
-	if authHeader == "" {
-		authHeader = c.Query("authorization")
-	}
-
-	if authHeader == "" {
-		authHeader = gjson.GetBytes(c.Body(), "authorization").String()
-	}
-
-	authentication := strings.TrimPrefix(authHeader, "Bearer ")
-
-	if authentication == "" {
-		return c.Status(http.StatusUnauthorized).JSON(model.AuthResponse{
-			Message: "Unauthorized: missing authentication header",
-		})
-	}
-
-	var claims model.CustomJwtClaims
-	token, err := jwt.ParseWithClaims(authentication, &claims, func(token *jwt.Token) (interface{}, error) {
-		return []byte(s.shopifyConfig.ClientSecret), nil
-	})
+	token, err := s.extractToken(c)
 	if err != nil {
-		return c.Status(http.StatusUnauthorized).JSON(model.AuthResponse{
-			Message: "Unauthorized: " + err.Error(),
-		})
+		return s.unauthorizedResponse(c, err)
 	}
 
-	if !token.Valid {
-		return fiber.NewError(http.StatusUnauthorized, "Couldn't handle this token")
+	claims, err := s.parseToken(token)
+	if err != nil {
+		return s.unauthorizedResponse(c, err)
 	}
 
-	cacheKey := "sessionId:" + claims.Jti + ":" + claims.Dest
-
-	if authDataCache, ok := s.cacheSvc.Get(cacheKey); ok {
-		s.logger.Info("get auth data from cache", zap.Any("authData", authDataCache))
-		authData := authDataCache.(AuthData)
-		setLocal(c, &authData)
+	cacheKey := s.getCacheKey(claims)
+	if authData, ok := s.getCachedAuthData(cacheKey); ok {
+		setLocal(c, authData)
 		return c.Next()
 	}
 
-	authData := AuthData{
+	authData, err := s.buildAuthData(claims, token)
+	if err != nil {
+		return s.unauthorizedResponse(c, err)
+	}
+
+	s.cacheAuthData(cacheKey, authData)
+	setLocal(c, authData)
+	return c.Next()
+}
+
+// extractToken extracts the token from various sources
+func (s *ShopifyAuthzMiddleware) extractToken(c *fiber.Ctx) (string, error) {
+	sources := []func() string{
+		func() string { return c.Get("authorization") },
+		func() string { return c.Params("authorization") },
+		func() string { return c.Query("authorization") },
+		func() string { return gjson.GetBytes(c.Body(), "authorization").String() },
+	}
+
+	for _, source := range sources {
+		if token := strings.TrimPrefix(source(), "Bearer "); token != "" {
+			return token, nil
+		}
+	}
+
+	return "", ErrMissingToken
+}
+
+// parseToken parses and validates the JWT token
+func (s *ShopifyAuthzMiddleware) parseToken(tokenString string) (*model.CustomJwtClaims, error) {
+	var claims model.CustomJwtClaims
+	token, err := jwt.ParseWithClaims(tokenString, &claims, func(token *jwt.Token) (interface{}, error) {
+		// TODO: Add signing method validation if needed
+		return []byte(s.shopifyConfig.ClientSecret), nil
+	})
+
+	if err != nil {
+		s.logger.Error("failed to parse token", zap.Error(err))
+		return nil, fmt.Errorf("invalid token: %w", err)
+	}
+
+	if !token.Valid {
+		return nil, ErrInvalidToken
+	}
+
+	return &claims, nil
+}
+
+// getCacheKey generates a cache key for the auth data
+func (s *ShopifyAuthzMiddleware) getCacheKey(claims *model.CustomJwtClaims) string {
+	return fmt.Sprintf("%s:%s:%s", cacheKeyPrefix, claims.Jti, claims.Dest)
+}
+
+// getCachedAuthData retrieves auth data from cache
+func (s *ShopifyAuthzMiddleware) getCachedAuthData(cacheKey string) (*models.AuthData, bool) {
+	if authDataCache, ok := s.cacheSvc.Get(cacheKey); ok {
+		return authDataCache.(*models.AuthData), true
+	}
+	return nil, false
+}
+
+// buildAuthData creates AuthData from claims and external services
+func (s *ShopifyAuthzMiddleware) buildAuthData(claims *model.CustomJwtClaims, token string) (*models.AuthData, error) {
+	authData := &models.AuthData{
 		Iss:             claims.Iss,
 		Dest:            claims.Dest,
 		Aud:             claims.Aud,
@@ -160,12 +199,24 @@ func (s *ShopifyAuthzMiddleware) Handle(c *fiber.Ctx) error {
 		MyshopifyDomain: strings.Split(claims.Dest, "/")[2],
 	}
 
-	// exchange the session token with access token
-	accessTokenResponse, err := shopifysvc.ExchangeAccessToken(authData.MyshopifyDomain, s.shopifyConfig.ClientId, s.shopifyConfig.ClientSecret, authentication)
+	if err := s.enrichAuthData(authData, token); err != nil {
+		return nil, err
+	}
+
+	return authData, nil
+}
+
+// enrichAuthData enriches auth data with external service data
+func (s *ShopifyAuthzMiddleware) enrichAuthData(authData *models.AuthData, token string) error {
+	accessTokenResponse, err := shopifysvc.ExchangeAccessToken(
+		authData.MyshopifyDomain,
+		s.shopifyConfig.ClientId,
+		s.shopifyConfig.ClientSecret,
+		token,
+	)
 	if err != nil {
-		return c.Status(http.StatusUnauthorized).JSON(model.AuthResponse{
-			Message: "Unauthorized: " + err.Error(),
-		})
+		s.logger.Error("failed to exchange access token", zap.Error(err))
+		return fmt.Errorf("failed to exchange token: %w", err)
 	}
 
 	authData.AccessToken = accessTokenResponse.AccessToken
@@ -173,27 +224,35 @@ func (s *ShopifyAuthzMiddleware) Handle(c *fiber.Ctx) error {
 	shopifyClient := s.shopifySvc.GetShopifyClient(authData.MyshopifyDomain, authData.AccessToken)
 	shop, err := shopifyClient.GetShopDetails()
 	if err != nil {
-		return c.Status(http.StatusUnauthorized).JSON(model.AuthResponse{
-			Message: "Unauthorized: " + err.Error(),
-		})
+		s.logger.Error("failed to get shop details", zap.Error(err))
+		return fmt.Errorf("failed to get shop details: %w", err)
 	}
 
 	authData.ShopID = shop.ID
-
-	s.logger.Info("set auth data to cache", zap.Any("authData", authData))
-	s.cacheSvc.SetWithTTL(cacheKey, authData, 3*time.Minute)
-
-	setLocal(c, &authData)
-	return c.Next()
+	return nil
 }
 
-func setLocal(c *fiber.Ctx, authData *AuthData) {
+// cacheAuthData stores auth data in cache
+func (s *ShopifyAuthzMiddleware) cacheAuthData(cacheKey string, authData *models.AuthData) {
+	s.logger.Debug("caching auth data", zap.String("cacheKey", cacheKey))
+	s.cacheSvc.SetWithTTL(cacheKey, *authData, s.config.CacheTTL)
+}
+
+// unauthorizedResponse returns a standardized unauthorized response
+func (s *ShopifyAuthzMiddleware) unauthorizedResponse(c *fiber.Ctx, err error) error {
+	return c.Status(http.StatusUnauthorized).JSON(model.AuthResponse{
+		Message: fmt.Sprintf("Unauthorized: %v", err),
+	})
+}
+
+func setLocal(c *fiber.Ctx, authData *models.AuthData) {
 	c.Locals(LocalKeyMyshopifyDomain, authData.MyshopifyDomain)
 	c.Locals(LocalKeyAccessToken, authData.AccessToken)
 	c.Locals(LocalKeyShopID, authData.ShopID)
 	c.Locals(LocalKeySid, authData.Sid)
 }
 
+// Helper functions to get values from context
 func GetMyShopifyDomain(c *fiber.Ctx) (string, bool) {
 	myshopifyDomain, ok := c.Locals(LocalKeyMyshopifyDomain).(string)
 	return myshopifyDomain, ok

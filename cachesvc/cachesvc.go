@@ -28,13 +28,13 @@ func ProvideCacheConfig() *CacheConfig {
 
 // CacheService wraps the ristretto cache and includes configuration
 type CacheService struct {
-	cache  *ristretto.Cache[string, interface{}]
+	cache  *ristretto.Cache
 	config *CacheConfig
 }
 
 // NewCacheService creates a new CacheService with the given configuration
 func NewCacheService(config *CacheConfig) (*CacheService, func(), error) {
-	cache, err := ristretto.NewCache(&ristretto.Config[string, interface{}]{
+	cache, err := ristretto.NewCache(&ristretto.Config{
 		NumCounters: config.NumCounters,
 		MaxCost:     config.MaxCost,
 		BufferItems: config.BufferItems,

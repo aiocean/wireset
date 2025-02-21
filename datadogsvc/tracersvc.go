@@ -33,6 +33,7 @@ func (s *DatadogSvc) Start() {
 		tracer.WithEnv(s.confSvc.Environment),
 		tracer.WithLogStartup(false),
 		tracer.WithAnalytics(true),
+		tracer.WithHostname(s.confSvc.ServiceName),
 	)
 }
 
